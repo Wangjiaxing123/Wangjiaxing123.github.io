@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -106,11 +106,7 @@
 平时项目开发总要自定义dialog满足产品的设计需求，但系统提供Dialog和AlertDialog用起来不是很方便，所以自己封装一个好用的Dialog基类是再好不过了。
 
 实现
-BaseDialog.java
-
-import android.app.Dialog;
-import android.content.Context;
-import android.conte">
+BaseDialog.java123456789101112131415161718192021222324252627282930313233343536373839404142434445">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义Dialog样式">
 <meta property="og:url" content="http://yoursite.com/2017/01/07/自定义Dialog样式/index.html">
@@ -119,25 +115,17 @@ import android.conte">
 平时项目开发总要自定义dialog满足产品的设计需求，但系统提供Dialog和AlertDialog用起来不是很方便，所以自己封装一个好用的Dialog基类是再好不过了。
 
 实现
-BaseDialog.java
-
-import android.app.Dialog;
-import android.content.Context;
-import android.conte">
-<meta property="og:image" content="http://yoursite.com/./img/QQ截图20170107204110.jpg">
-<meta property="og:updated_time" content="2017-01-08T06:52:47.315Z">
+BaseDialog.java123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta property="og:image" content="http://yoursite.com/images/QQ截图20170107204110.jpg">
+<meta property="og:updated_time" content="2017-01-08T13:48:27.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Dialog样式">
 <meta name="twitter:description" content="自定义Dialog样式前言
 平时项目开发总要自定义dialog满足产品的设计需求，但系统提供Dialog和AlertDialog用起来不是很方便，所以自己封装一个好用的Dialog基类是再好不过了。
 
 实现
-BaseDialog.java
-
-import android.app.Dialog;
-import android.content.Context;
-import android.conte">
-<meta name="twitter:image" content="http://yoursite.com/./img/QQ截图20170107204110.jpg">
+BaseDialog.java123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20170107204110.jpg">
 
 
 
@@ -145,8 +133,8 @@ import android.conte">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -192,7 +180,7 @@ import android.conte">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -303,7 +291,7 @@ import android.conte">
   
   
 
-  <article class="post post-type-android " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/07/自定义Dialog样式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,8 +354,8 @@ import android.conte">
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Testing/" itemprop="url" rel="index">
-                    <span itemprop="name">Testing</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -405,145 +393,19 @@ import android.conte">
 <p>平时项目开发总要自定义dialog满足产品的设计需求，但系统提供Dialog和AlertDialog用起来不是很方便，所以自己封装一个好用的Dialog基类是再好不过了。</p>
 </blockquote>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><blockquote>
-<p>BaseDialog.java</p>
-</blockquote>
-<pre><code>import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.view.View;
-import android.view.WindowManager;
-
-/**
- * Created by WJX .
- * Desc: 一个便于自定义Dialog样式的基类
- * Created on 2017/1/7 11:19.
- * Mail:408030208@qq.com
- */
-
-public abstract class BaseDialog {
-    protected Context context;
-    private Dialog dialog;
-    protected abstract int getDialogStyleId();//子类实现获取样式id
-    protected abstract View getView();//子类实现内容布局View
-
-    protected BaseDialog(Context context){
-        this.context=context;
-        //初始化基础对话框
-        if (getDialogStyleId()==0){
-            dialog=new Dialog(context);
-        }else {
-            dialog=new Dialog(context,getDialogStyleId());
-        }
-        //dialog设置内容布局view
-        dialog.setContentView(getView());
-        //关闭系统键盘
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
-
-    /**
-     * dialog设置能否点击取消,链式
-     */
-public BaseDialog setCancelable(boolean cacel){
-    dialog.setCancelable(cacel);
-    return this;
-}
-
-    /**
-     * dialog显示,链式
-     */
-    public BaseDialog show(){
-        dialog.show();
-        return this;
-    }
-
-    /**
-     * dialog消失,链式
-     */
-    public BaseDialog  disMiss(){
-        dialog.dismiss();
-        return this;
-    }
-
-    /**
-     * dialog是否在显示,链式
-     */
-    public boolean isShowing(){
-        return dialog.isShowing();
-    }
-
-    /**
-     * dialog消失监听,链式
-     */
-    public BaseDialog setOnDismissListener(DialogInterface.OnDismissListener dismissListener){
-    dialog.setOnDismissListener(dismissListener);
-        return this;
-    }
-
-    /**
-     * dialog取消监听,链式
-     */
-    public BaseDialog setOnCancelListener(DialogInterface.OnCancelListener cancelListener){
-        dialog.setOnCancelListener(cancelListener);
-        return this;
-    }
-
-    /**
-     * dialog显示监听,链式
-     */
-    public BaseDialog setOnShowListener(DialogInterface.OnShowListener onShowListener){
-     dialog.setOnShowListener(onShowListener);
-        return this;
-    }
-}
-</code></pre><blockquote>
+<p>BaseDialog.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> android.app.Dialog;</div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.DialogInterface;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.view.WindowManager;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by WJX .</div><div class="line"> * Desc: 一个便于自定义Dialog样式的基类</div><div class="line"> * Created on 2017/1/7 11:19.</div><div class="line"> * Mail:408030208@qq.com</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDialog</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> Context context;</div><div class="line">    <span class="keyword">private</span> Dialog dialog;</div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getDialogStyleId</span><span class="params">()</span></span>;<span class="comment">//子类实现获取样式id</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> View <span class="title">getView</span><span class="params">()</span></span>;<span class="comment">//子类实现内容布局View</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">BaseDialog</span><span class="params">(Context context)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.context=context;</div><div class="line">        <span class="comment">//初始化基础对话框</span></div><div class="line">        <span class="keyword">if</span> (getDialogStyleId()==<span class="number">0</span>)&#123;</div><div class="line">            dialog=<span class="keyword">new</span> Dialog(context);</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            dialog=<span class="keyword">new</span> Dialog(context,getDialogStyleId());</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//dialog设置内容布局view</span></div><div class="line">        dialog.setContentView(getView());</div><div class="line">        <span class="comment">//关闭系统键盘</span></div><div class="line">        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog设置能否点击取消,链式</div><div class="line">     */</div><div class="line"><span class="function"><span class="keyword">public</span> BaseDialog <span class="title">setCancelable</span><span class="params">(<span class="keyword">boolean</span> cacel)</span></span>&#123;</div><div class="line">    dialog.setCancelable(cacel);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog显示,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> BaseDialog <span class="title">show</span><span class="params">()</span></span>&#123;</div><div class="line">        dialog.show();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog消失,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> BaseDialog  <span class="title">disMiss</span><span class="params">()</span></span>&#123;</div><div class="line">        dialog.dismiss();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog是否在显示,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isShowing</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> dialog.isShowing();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog消失监听,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> BaseDialog <span class="title">setOnDismissListener</span><span class="params">(DialogInterface.OnDismissListener dismissListener)</span></span>&#123;</div><div class="line">    dialog.setOnDismissListener(dismissListener);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog取消监听,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> BaseDialog <span class="title">setOnCancelListener</span><span class="params">(DialogInterface.OnCancelListener cancelListener)</span></span>&#123;</div><div class="line">        dialog.setOnCancelListener(cancelListener);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * dialog显示监听,链式</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> BaseDialog <span class="title">setOnShowListener</span><span class="params">(DialogInterface.OnShowListener onShowListener)</span></span>&#123;</div><div class="line">     dialog.setOnShowListener(onShowListener);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>YuanJiaoDialog.java</p>
 </blockquote>
-<pre><code>/**
- * Created by WJX .
- * Desc: 一个圆角dialog
- * Created on 2017/1/7 11:05.
- * Mail:408030208@qq.com
- */
-
-public class YuanJiaoDialog extends BaseDialog {
-    public YuanJiaoDialog(Context context) {
-        super(context);
-    }
-    @Override
-    protected int getDialogStyleId() {
-        return R.style.dialog_style_one;
-    }
-    @Override
-    protected View getView() {
-        View view= LayoutInflater.from(context).inflate(R.layout.dialog_conent_layout,null);
-        return view;
-    }
-}
-</code></pre><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by WJX .</div><div class="line"> * Desc: 一个圆角dialog</div><div class="line"> * Created on 2017/1/7 11:05.</div><div class="line"> * Mail:408030208@qq.com</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YuanJiaoDialog</span> <span class="keyword">extends</span> <span class="title">BaseDialog</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">YuanJiaoDialog</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getDialogStyleId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> R.style.dialog_style_one;</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> View <span class="title">getView</span><span class="params">()</span> </span>&#123;</div><div class="line">        View view= LayoutInflater.from(context).inflate(R.layout.dialog_conent_layout,<span class="keyword">null</span>);</div><div class="line">        <span class="keyword">return</span> view;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>dialog_style_one</p>
 </blockquote>
-<pre><code>&lt;style name=&quot;dialog_ios_style&quot; parent=&quot;@android:style/Theme.Dialog&quot;&gt;
-        &lt;!--window 背景，这里可以设置整个窗体的背景，不过会被窗体里面的内容布局覆盖，圆角，窗体大小在某种情况下可以通过这里的背景设置--&gt;
-        &lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/yuanjiao_background&lt;/item&gt;
-        &lt;item name=&quot;android:windowContentOverlay&quot;&gt;@null&lt;/item&gt;
-        &lt;item name=&quot;android:windowIsFloating&quot;&gt;true&lt;/item&gt;
-        &lt;item name=&quot;android:windowFrame&quot;&gt;@null&lt;/item&gt;
-        &lt;item name=&quot;android:backgroundDimEnabled&quot;&gt;true&lt;/item&gt;
-        &lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;
-        &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;
-        &lt;item name=&quot;android:windowMinWidthMajor&quot;&gt;100%&lt;/item&gt;
-    &lt;/style&gt;
-</code></pre><blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"dialog_ios_style"</span> <span class="attr">parent</span>=<span class="string">"@android:style/Theme.Dialog"</span>&gt;</span><span class="xml"></span></div><div class="line">        <span class="comment">&lt;!--window 背景，这里可以设置整个窗体的背景，不过会被窗体里面的内容布局覆盖，圆角，窗体大小在某种情况下可以通过这里的背景设置--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@drawable/yuanjiao_background<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsFloating"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowFrame"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:backgroundDimEnabled"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsTranslucent"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowMinWidthMajor"</span>&gt;</span>100%<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>  yuanjiao_background.xml  窗体背景布局xml</p>
 </blockquote>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    &gt;
-    &lt;size android:height=&quot;200dp&quot; android:width=&quot;200dp&quot;/&gt;
-    &lt;corners android:radius=&quot;20dp&quot;/&gt;
-    &lt;solid android:color=&quot;@android:color/white&quot; /&gt;
-&lt;/shape&gt;
-</code></pre><p><img src="./img/QQ截图20170107204110.jpg" alt=""></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"200dp"</span> <span class="attr">android:width</span>=<span class="string">"200dp"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"20dp"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@android:color/white"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="/images/QQ截图20170107204110.jpg" alt=""></p>
 
       
     </div>
@@ -565,12 +427,6 @@ public class YuanJiaoDialog extends BaseDialog {
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/android/" rel="tag"># android</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
@@ -586,8 +442,8 @@ public class YuanJiaoDialog extends BaseDialog {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/08/about-1/" rel="prev" title="about">
-                about <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/08/自定义View(1)/" rel="prev" title="自定义View(1)">
+                自定义View(1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -658,7 +514,7 @@ public class YuanJiaoDialog extends BaseDialog {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -667,7 +523,7 @@ public class YuanJiaoDialog extends BaseDialog {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -747,7 +603,7 @@ public class YuanJiaoDialog extends BaseDialog {
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -814,6 +670,13 @@ public class YuanJiaoDialog extends BaseDialog {
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
