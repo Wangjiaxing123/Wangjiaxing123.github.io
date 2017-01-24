@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodeJs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="ReactNative 初体验配置（windows）
+参考教程 https://facebook.github.io/react-native/docs/getting-started.html
+我首先是保证了在翻墙的环境安装这些软件的哈 ^-^
+因为windows的终端命令行不是很方便,所以先安装chocolatey（https://chocolatey.org/），看官网好像说他是一个软件管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative初体验">
+<meta property="og:url" content="http://yoursite.com/2017/01/24/ReactNative 体验/index.html">
+<meta property="og:site_name" content="生命在于折腾">
+<meta property="og:description" content="ReactNative 初体验配置（windows）
+参考教程 https://facebook.github.io/react-native/docs/getting-started.html
+我首先是保证了在翻墙的环境安装这些软件的哈 ^-^
+因为windows的终端命令行不是很方便,所以先安装chocolatey（https://chocolatey.org/），看官网好像说他是一个软件管理">
+<meta property="og:image" content="https://facebook.github.io/react-native/img/react-native-android-sdk-environment-variable-windows.png">
+<meta property="og:image" content="http://ojgs96t5i.bkt.clouddn.com/Screenshot_2017-01-24-17-43-39-0852752002.png">
+<meta property="og:image" content="http://ojgs96t5i.bkt.clouddn.com/Screenshot_2017-01-24-18-17-34-0202161002.png">
+<meta property="og:updated_time" content="2017-01-24T10:29:10.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReactNative初体验">
+<meta name="twitter:description" content="ReactNative 初体验配置（windows）
+参考教程 https://facebook.github.io/react-native/docs/getting-started.html
+我首先是保证了在翻墙的环境安装这些软件的哈 ^-^
+因为windows的终端命令行不是很方便,所以先安装chocolatey（https://chocolatey.org/），看官网好像说他是一个软件管理">
+<meta name="twitter:image" content="https://facebook.github.io/react-native/img/react-native-android-sdk-environment-variable-windows.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/24/ReactNative 体验/"/>
+
+
+
+
+
+  <title> ReactNative初体验 | 生命在于折腾 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">生命在于折腾</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">keep looking!</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/24/ReactNative 体验/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="newtrekWang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/F_2013_323.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="生命在于折腾">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="生命在于折腾" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ReactNative初体验
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-24T18:25:40+08:00">
+                2017-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ReactNative/" itemprop="url" rel="index">
+                    <span itemprop="name">ReactNative</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ReactNative-初体验"><a href="#ReactNative-初体验" class="headerlink" title="ReactNative 初体验"></a>ReactNative 初体验</h1><h2 id="配置（windows）"><a href="#配置（windows）" class="headerlink" title="配置（windows）"></a>配置（windows）</h2><ul>
+<li>参考教程 <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
+<li>我首先是保证了在翻墙的环境安装这些软件的哈 ^-^</li>
+<li><p>因为windows的终端命令行不是很方便,所以先安装chocolatey（<a href="https://chocolatey.org/），看官网好像说他是一个软件管理器。安装很简单，以管理员身份打开powerShell，然后贴如下代码执行" target="_blank" rel="external">https://chocolatey.org/），看官网好像说他是一个软件管理器。安装很简单，以管理员身份打开powerShell，然后贴如下代码执行</a></p>
+<blockquote>
+<p>iwr <a href="https://chocolatey.org/install.ps1" target="_blank" rel="external">https://chocolatey.org/install.ps1</a> -UseBasicParsing | iex<br>（安装时可能会出现禁止运行脚本的问题，可以参照这个方法解决。<a href="http://www.cnblogs.com/zhaozhan/archive/2012/06/01/2529384.html）" target="_blank" rel="external">http://www.cnblogs.com/zhaozhan/archive/2012/06/01/2529384.html）</a></p>
+</blockquote>
+</li>
+<li><p>安装nodejs和python</p>
+<blockquote>
+<p>choco install nodejs.install<br>choco install python2</p>
+</blockquote>
+</li>
+<li><p>nodejs安装完成后，会有npm,它也是个软件包管理器，用它就可以安装react-native了</p>
+<blockquote>
+<p>npm install -g react-native-cli</p>
+</blockquote>
+</li>
+<li><p>android 开发环境配置，这个就不用说了，要注意的是要规范配置ANDROID_HOME这个环境变量，这个很简单，照文档做就是，如果不这样位置，那么只有在你的android工程中配置了。<br><img src="https://facebook.github.io/react-native/img/react-native-android-sdk-environment-variable-windows.png" alt=""></p>
+</li>
+</ul>
+<h2 id="测试第一个react-native应用"><a href="#测试第一个react-native应用" class="headerlink" title="测试第一个react-native应用"></a>测试第一个react-native应用</h2><blockquote>
+<p>上面那些都配置好，就可以构建react-native工程了</p>
+</blockquote>
+<ul>
+<li><p>构建项目</p>
+<blockquote>
+<p>react-native init HelloWorld //这个是构建项目，名字为<br>cd HelloWorld<br>react-native start //这个我理解是启动react的服务，因为应用是通过js渲染的，正如网页有它的服务器一样，react也有他的服务。<br><strong>注意：</strong> 第一次构建应用它会自动安装很多东西，要等很久。</p>
+</blockquote>
+</li>
+<li><p>启动应用</p>
+<blockquote>
+<p>react-native run-android //这个命令实际有两步。一是启动react服务（服务肯定是在电脑上运行啦），二是编译HelloWorld应用并安装在android设备上。所以当然可以手动分开执行<br>我是直接用的真机调试，所以只要保证手机应用能连得上电脑运行的react服务即可，我是通过USB数据线连的：</p>
+<ul>
+<li>保证设备和电脑连接，adb能起作用。</li>
+<li>保证react服务在运行着。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>到底啥样子<br>就是这个样子：<br><img src="http://ojgs96t5i.bkt.clouddn.com/Screenshot_2017-01-24-17-43-39-0852752002.png" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p>还有个特点，手机摇一下，界面就会弹出一个对话框，里面有个reload,我艹，这就安逸了，可以立刻刷新界面，像网页一样，这样调试时，手机只要摇一下就可以立马看到效果了，这可比原生开发快了好多倍！！！！！</p>
+</blockquote>
+<h2 id="实现Hello-World"><a href="#实现Hello-World" class="headerlink" title="实现Hello World"></a>实现Hello World</h2><blockquote>
+<p>官方引导：React Native is like React, but it uses native components instead of web components as building blocks. So to understand the basic structure of a React Native app, you need to understand some of the basic React concepts, like JSX, components, state, and props. If you already know React, you still need to learn some React-Native-specific stuff, like the native components. This tutorial is aimed at all audiences, whether you have React experience or not.<br>上面说，react-native是用原生组件代替react的web组件，所以可想而知渲染效果肯定比网页的好。我一直都是学android原生应用开发的，没学过react，现在只知道他是前端框架，就照着代码验证理解好了。</p>
+</blockquote>
+<ul>
+<li>分析代码 index.android.js<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Sample React Native App</div><div class="line"> * https://github.com/facebook/react-native</div><div class="line"> * @flow</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;<span class="comment">//这里导的是来自react的，估计是前端核心类</span></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  AppRegistry,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;<span class="comment">//这里导的是来自react-native的，估计是提供界面组件的，而且这些组件是用原生组件渲染的</span></div><div class="line"><span class="comment">//输出默认的类HelloWorld，它是继承组件类的，render()暂时不晓得啥意思,return 包了个html,这个html应该就是显示的布局界面，看结构，外面是View，它包着里面的Text</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          HelloWorld</div><div class="line">        &lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//这个应该是个组件样式库，包含container,welcome,instructions三个自定已样式，什么字体，颜色，背景都通过这个设置，很像android的style,只不过这个很像json格式来设置的</span></div><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  <span class="attr">container</span>: &#123;</div><div class="line">    <span class="attr">flex</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">justifyContent</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">alignItems</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">backgroundColor</span>: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">welcome</span>: &#123;</div><div class="line">    <span class="attr">fontSize</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">textAlign</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">margin</span>: <span class="number">10</span>,</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">instructions</span>: &#123;</div><div class="line">    <span class="attr">textAlign</span>: <span class="string">'center'</span>,</div><div class="line">    <span class="attr">color</span>: <span class="string">'#333333'</span>,</div><div class="line">    <span class="attr">marginBottom</span>: <span class="number">5</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div><div class="line"><span class="comment">//这个应该是注册的意思吧</span></div><div class="line">AppRegistry.registerComponent(<span class="string">'HelloWorld'</span>, () =&gt; HelloWorld);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>保存，再reload<br><img src="http://ojgs96t5i.bkt.clouddn.com/Screenshot_2017-01-24-18-17-34-0202161002.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodeJs/" rel="tag"># nodeJs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/17/通用格式/" rel="next" title="android adb常用命令">
+                <i class="fa fa-chevron-left"></i> android adb常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/F_2013_323.jpg"
+               alt="newtrekWang" />
+          <p class="site-author-name" itemprop="name">newtrekWang</p>
+          <p class="site-description motion-element" itemprop="description">一念起，天涯咫尺；一念灭，咫尺天涯。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactNative-初体验"><span class="nav-number">1.</span> <span class="nav-text">ReactNative 初体验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置（windows）"><span class="nav-number">1.1.</span> <span class="nav-text">配置（windows）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试第一个react-native应用"><span class="nav-number">1.2.</span> <span class="nav-text">测试第一个react-native应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现Hello-World"><span class="nav-number">1.3.</span> <span class="nav-text">实现Hello World</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">newtrekWang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
