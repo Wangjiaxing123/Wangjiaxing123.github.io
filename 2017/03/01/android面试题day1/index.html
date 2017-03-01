@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java," />
+  <meta name="keywords" content="面试," />
 
 
 
@@ -102,21 +102,24 @@
 
 
 
-<meta name="description" content="java 设计模式之策略模式
-通常如果一个问题有多个解决方案时，最简单的方式就是利用if-else或者swich-case方式根据不同的情景选择不同的解决方案，但这种简单的方案问题太多，例如耦合性太高，代码臃肿，难以维护等。如果解决问题方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱，复杂，当需要增加一种方案是就需要修改类中的代码。怎么对于修改不关闭？不是说好的要遵循开闭原">
+<meta name="description" content="感觉大四还是找工作的概率大，感觉考研没多大吸引力，也许是我没多大概念吧。与其寄希望于考研，不如把握现在。参考一师兄的建议，每天看下面试题，总结衍生android知识框架。
+
+面试题：知道Service吗，它有几种启动方式？原文链接：http://www.jianshu.com/p/7a7db9f8692d?utm_campaign=haruki&amp;amp;utm_content=note&amp;amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java 设计模式之策略模式">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/java 设计模式之策略模式/index.html">
+<meta property="og:title" content="android面试一天一题 day1">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/android面试题day1/index.html">
 <meta property="og:site_name" content="生命在于折腾">
-<meta property="og:description" content="java 设计模式之策略模式
-通常如果一个问题有多个解决方案时，最简单的方式就是利用if-else或者swich-case方式根据不同的情景选择不同的解决方案，但这种简单的方案问题太多，例如耦合性太高，代码臃肿，难以维护等。如果解决问题方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱，复杂，当需要增加一种方案是就需要修改类中的代码。怎么对于修改不关闭？不是说好的要遵循开闭原">
-<meta property="og:image" content="http://ojgs96t5i.bkt.clouddn.com/QQ20170228212218.jpg">
-<meta property="og:updated_time" content="2017-02-28T13:31:34.000Z">
+<meta property="og:description" content="感觉大四还是找工作的概率大，感觉考研没多大吸引力，也许是我没多大概念吧。与其寄希望于考研，不如把握现在。参考一师兄的建议，每天看下面试题，总结衍生android知识框架。
+
+面试题：知道Service吗，它有几种启动方式？原文链接：http://www.jianshu.com/p/7a7db9f8692d?utm_campaign=haruki&amp;amp;utm_content=note&amp;amp;">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1685558-5b9c3263c0af2ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-03-01T12:15:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java 设计模式之策略模式">
-<meta name="twitter:description" content="java 设计模式之策略模式
-通常如果一个问题有多个解决方案时，最简单的方式就是利用if-else或者swich-case方式根据不同的情景选择不同的解决方案，但这种简单的方案问题太多，例如耦合性太高，代码臃肿，难以维护等。如果解决问题方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱，复杂，当需要增加一种方案是就需要修改类中的代码。怎么对于修改不关闭？不是说好的要遵循开闭原">
-<meta name="twitter:image" content="http://ojgs96t5i.bkt.clouddn.com/QQ20170228212218.jpg">
+<meta name="twitter:title" content="android面试一天一题 day1">
+<meta name="twitter:description" content="感觉大四还是找工作的概率大，感觉考研没多大吸引力，也许是我没多大概念吧。与其寄希望于考研，不如把握现在。参考一师兄的建议，每天看下面试题，总结衍生android知识框架。
+
+面试题：知道Service吗，它有几种启动方式？原文链接：http://www.jianshu.com/p/7a7db9f8692d?utm_campaign=haruki&amp;amp;utm_content=note&amp;amp;">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1685558-5b9c3263c0af2ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -144,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/28/java 设计模式之策略模式/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/01/android面试题day1/"/>
 
 
 
 
 
-  <title> java 设计模式之策略模式 | 生命在于折腾 </title>
+  <title> android面试一天一题 day1 | 生命在于折腾 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -283,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/28/java 设计模式之策略模式/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/android面试题day1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="newtrekWang">
@@ -307,7 +310,7 @@
             
             
               
-                java 设计模式之策略模式
+                android面试一天一题 day1
               
             
           </h1>
@@ -322,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-28T21:45:31+08:00">
-                2017-02-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T21:48:49+08:00">
+                2017-03-01
               </time>
             
 
@@ -345,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/android面试/" itemprop="url" rel="index">
+                    <span itemprop="name">android面试</span>
                   </a>
                 </span>
 
@@ -380,20 +383,30 @@
       
 
       
-        <h1 id="java-设计模式之策略模式"><a href="#java-设计模式之策略模式" class="headerlink" title="java 设计模式之策略模式"></a>java 设计模式之策略模式</h1><blockquote>
-<p>通常如果一个问题有多个解决方案时，最简单的方式就是利用if-else或者swich-case方式根据不同的情景选择不同的解决方案，但这种简单的方案问题太多，例如耦合性太高，代码臃肿，难以维护等。如果解决问题方案中包括大量的处理逻辑需要封装，或者处理方式变动较大的时候则就显得混乱，复杂，当需要增加一种方案是就需要修改类中的代码。怎么对于修改不关闭？不是说好的要遵循开闭原则吗？<br>应对这种情况策略模式就能很好地解决这列问题，它将各种方案分离开来，让客户端根据具体的需求来动态地选择不同的策略方案。<br>举个例子：用一个Calculator类来计算坐车的路费，车是有很多类型的，有公交车，地铁，火车，出租车等，当然每种车的车费计算方法是不一样的，所以用if-else的话，会在Calculator类里做很多类型判断，而且把各类型的计算方法也塞在里面了，试想一下，有一天需要时要增加一种车，那你只有在Calculator类多加个if，或者有一天需要要你改那种车的计费方法，你又在Calculator类里改，可以想象这样的改动是经常的，所以就有个问题，有增加或有改动，我可以不在Calculator类改动吗。可以的，策略模式</p>
+        <blockquote>
+<p>感觉大四还是找工作的概率大，感觉考研没多大吸引力，也许是我没多大概念吧。与其寄希望于考研，不如把握现在。<br>参考一师兄的建议，每天看下面试题，总结衍生android知识框架。</p>
 </blockquote>
-<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><blockquote>
-<ul>
-<li><strong>Context</strong> 用来操作策略的上下文环境，比如上面说的Calculator类</li>
-<li><strong>Stragety</strong> 策略的对象</li>
-<li><strong>ConcreteStragetyA,ConcreteStragetyB</strong> 具体的策略实现</li>
-</ul>
-</blockquote>
-<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170228212218.jpg" alt=""></p>
-<p>示例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PriceCalculator</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> Stragety stragety;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStragety</span><span class="params">(Stragety stragety)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.stragety=stragety;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calculatePrice</span><span class="params">(<span class="keyword">int</span> km)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> price=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (stragety!=<span class="keyword">null</span>) &#123;</div><div class="line">		price=stragety.calculatePrice(km);</div><div class="line">	&#125;</div><div class="line">	System.out.println(String.valueOf(price));</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bus</span> <span class="keyword">implements</span> <span class="title">Stragety</span></span>&#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculatePrice</span><span class="params">(<span class="keyword">int</span> km)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">3</span>*km;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subway</span> <span class="keyword">implements</span> <span class="title">Stragety</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculatePrice</span><span class="params">(<span class="keyword">int</span> km)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">5</span>*km;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Taxi</span> <span class="keyword">implements</span> <span class="title">Stragety</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculatePrice</span><span class="params">(<span class="keyword">int</span> km)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>*km;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		PriceCalculator laowang=<span class="keyword">new</span> PriceCalculator();</div><div class="line">		laowang.setStragety(<span class="keyword">new</span> Bus());</div><div class="line">		laowang.calculatePrice(<span class="number">3</span>);</div><div class="line">		laowang.setStragety(<span class="keyword">new</span> Subway());</div><div class="line">		laowang.calculatePrice(<span class="number">3</span>);</div><div class="line">		laowang.setStragety(<span class="keyword">new</span> Taxi());</div><div class="line">		laowang.calculatePrice(<span class="number">3</span>);</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="面试题：知道Service吗，它有几种启动方式？"><a href="#面试题：知道Service吗，它有几种启动方式？" class="headerlink" title="面试题：知道Service吗，它有几种启动方式？"></a>面试题：知道Service吗，它有几种启动方式？</h1><p>原文链接：<a href="http://www.jianshu.com/p/7a7db9f8692d?utm_campaign=haruki&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qq" target="_blank" rel="external">http://www.jianshu.com/p/7a7db9f8692d?utm_campaign=haruki&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qq</a></p>
 <blockquote>
-<p>使用if-else暴露的问题是代码臃肿，逻辑复杂，难以升级和维护，没有结构可言；策略模式是通过建立抽象，将不同的策略构建成一个具体的策略实现，通过不同的策略实现算法替换。在简化逻辑，结构的同时，增强了系统的可读性，稳定性，可扩展性。</p>
+<p>要我现在回答，我可能说我只知道,它没有界面，运行在后台，一直在处理一些耗时长的任务，比后台播放音乐，一些IM框架也会启动服务。两种启动方式，因为我好像在平时开发中从来没有用过它。既然这里要问，好好补补吧。</p>
+</blockquote>
+<h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><blockquote>
+<p>Service是一个专门在后台处理长时间任务的android组件，它没有UI,一旦Service被启动起来，它就跟Activity一样，它完全具有自己的生命周期。他有两种启动方式，startService和bindService.</p>
+<p>扩：开发Service的步骤和开发Activity的步骤很像，开发Service组件需要先开发一个Service子类，然后在AndroidManifest.xml文件中配置该Service，配置时可通过<intent-filter...>元素指定它可被那些intent启动。服务可以处理网络事务、播放音乐，执行文件 I/O 或与内容提供程序交互，而所有这一切均可在后台进行。android系统本身提供了大量的Service组件，开发者可通过这些系统Service来操作android系统本身。</intent-filter...></p>
+</blockquote>
+<h1 id="两种启动方式的区别"><a href="#两种启动方式的区别" class="headerlink" title="两种启动方式的区别"></a>两种启动方式的区别</h1><blockquote>
+<p><strong>startService</strong> 只是启动Service，启动它的组件（如Activity）和Service并没有关联，只有当Service调用stopSelf或者其他组件调用stopService服务才会终止。</p>
+<p><strong>bindService</strong>方法启动Service，其他组件可以通过回调获取Service的代理对象和Service交互，而这两方也进行了绑定，当启动方销毁时，Service也会自动进行unBind操作，当发现所有绑定都进行了unBind时才会销毁Service.</p>
+<p><strong>对生命周期的影响</strong><br><img src="http://upload-images.jianshu.io/upload_images/1685558-5b9c3263c0af2ea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+<h2 id="Service的onCreate回调函数可以做耗时的操作吗？"><a href="#Service的onCreate回调函数可以做耗时的操作吗？" class="headerlink" title="Service的onCreate回调函数可以做耗时的操作吗？"></a>Service的onCreate回调函数可以做耗时的操作吗？</h2><blockquote>
+<p>不能，看上面的生命周期图，onCreate回调在主线程里调用的，耗时操作会拥塞UI。</p>
+</blockquote>
+<h2 id="如果需要做耗时的操作，你会怎么做？"><a href="#如果需要做耗时的操作，你会怎么做？" class="headerlink" title="如果需要做耗时的操作，你会怎么做？"></a>如果需要做耗时的操作，你会怎么做？</h2><blockquote>
+<p>这个问题作者也没给答案，大概就是另外开个子线程处理吧</p>
+</blockquote>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><blockquote>
+<p>这个没咋弄，以后有空补上</p>
 </blockquote>
 
       
@@ -418,7 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -427,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/24/ReactNative 体验/" rel="next" title="ReactNative初体验">
-                <i class="fa fa-chevron-left"></i> ReactNative初体验
+              <a href="/2017/02/28/java 设计模式之策略模式/" rel="next" title="java 设计模式之策略模式">
+                <i class="fa fa-chevron-left"></i> java 设计模式之策略模式
               </a>
             
           </div>
@@ -437,8 +450,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/01/android面试题day1/" rel="prev" title="android面试一天一题 day1">
-                android面试一天一题 day1 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/01/java 设计模式之单例模式/" rel="prev" title="java 设计模式之单例模式">
+                java 设计模式之单例模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -562,7 +575,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-设计模式之策略模式"><span class="nav-number">1.</span> <span class="nav-text">java 设计模式之策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#角色"><span class="nav-number">1.1.</span> <span class="nav-text">角色</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面试题：知道Service吗，它有几种启动方式？"><span class="nav-number">1.</span> <span class="nav-text">面试题：知道Service吗，它有几种启动方式？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">2.</span> <span class="nav-text">Service</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两种启动方式的区别"><span class="nav-number">3.</span> <span class="nav-text">两种启动方式的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service的onCreate回调函数可以做耗时的操作吗？"><span class="nav-number">3.1.</span> <span class="nav-text">Service的onCreate回调函数可以做耗时的操作吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果需要做耗时的操作，你会怎么做？"><span class="nav-number">3.2.</span> <span class="nav-text">如果需要做耗时的操作，你会怎么做？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a></li></ol></div>
             
 
           </div>
