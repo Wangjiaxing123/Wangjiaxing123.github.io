@@ -1,0 +1,979 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="版本控制," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="git学习笔记集中式和分布式版本控制系统有什么区别呢？
+集中式版本控制系统 版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。
+
+
+
+集中式版本控制系统最大的毛病就是必须联网才能工作，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/git学习笔记/index.html">
+<meta property="og:site_name" content="生命在于折腾">
+<meta property="og:description" content="git学习笔记集中式和分布式版本控制系统有什么区别呢？
+集中式版本控制系统 版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。
+
+
+
+集中式版本控制系统最大的毛病就是必须联网才能工作，如果">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001384860735706fd4c70aa2ce24b45a8ade85109b0222b000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/0013848607465969378d7e6d5e6452d8161cf472f835523000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0">
+<meta property="og:image" content="http://github.liaoxuefeng.com/sinaweibopy/video/discard-changes-of-working-dir.mp4">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/0013849084639042e9b7d8d927140dba47c13e76fe5f0d6000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/0013849084720379a3eae576b9f417da2add578c8612a2e000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/0013849087937492135fbf4bbd24dfcbc18349a8a59d36d000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001384908811773187a597e2d844eefb11f5cf5d56135ca000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/00138490883510324231a837e5d4aee844d3e4692ba50f5000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001384909115478645b93e2b5ae4dc78da049a0d1704a41000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/00138490913052149c4b2cd9702422aa387ac024943921b000/0">
+<meta property="og:image" content="http://www.liaoxuefeng.com/files/attachments/001384909222841acf964ec9e6a4629a35a7a30588281bb000/0">
+<meta property="og:updated_time" content="2017-03-18T06:45:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git学习笔记">
+<meta name="twitter:description" content="git学习笔记集中式和分布式版本控制系统有什么区别呢？
+集中式版本控制系统 版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。
+
+
+
+集中式版本控制系统最大的毛病就是必须联网才能工作，如果">
+<meta name="twitter:image" content="http://www.liaoxuefeng.com/files/attachments/001384860735706fd4c70aa2ce24b45a8ade85109b0222b000/0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/20/git学习笔记/"/>
+
+
+
+
+
+  <title> git学习笔记 | 生命在于折腾 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">生命在于折腾</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">keep looking!</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/git学习笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="newtrekWang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/F_2013_323.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="生命在于折腾">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="生命在于折腾" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-20T21:07:03+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="git学习笔记"><a href="#git学习笔记" class="headerlink" title="git学习笔记"></a>git学习笔记</h2><h3 id="集中式和分布式版本控制系统有什么区别呢？"><a href="#集中式和分布式版本控制系统有什么区别呢？" class="headerlink" title="集中式和分布式版本控制系统有什么区别呢？"></a>集中式和分布式版本控制系统有什么区别呢？</h3><blockquote>
+<p><strong><em>集中式版本控制系统</em></strong> 版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/001384860735706fd4c70aa2ce24b45a8ade85109b0222b000/0" alt=""></p>
+<blockquote>
+<p>集中式版本控制系统最大的毛病就是必须联网才能工作，如果在局域网内还好，带宽够大，速度够快，可如果在互联网上，遇到网速慢的话，可能提交一个10M的文件就需要5分钟，这还不得把人给憋死啊。</p>
+<p><strong><em>分布式版本控制系统</em></strong>根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/0013848607465969378d7e6d5e6452d8161cf472f835523000/0" alt=""></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote>
+<p><strong><em>在Windows上安装Git</em></strong><br>Windows下要使用很多Linux/Unix的工具时，需要Cygwin这样的模拟环境，Git也一样。Cygwin的安装和配置都比较复杂，就不建议你折腾了。不过，有高人已经把模拟环境和Git都打包好了，名叫msysgit，只需要下载一个单独的exe安装程序，其他什么也不用装，绝对好用.msysgit是Windows版的Git，从<a href="https://git-for-windows.github.io下载" target="_blank" rel="external">https://git-for-windows.github.io下载</a><br>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。</p>
+</blockquote>
+<p>所以安装后，配置：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"Your Name"</span></div><div class="line">$ git config --global user.email <span class="string">"email@example.com"</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</p>
+</blockquote>
+<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><blockquote>
+<p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。<br>创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ mkdir learngit</div><div class="line">$ cd learngit</div><div class="line">$ pwd</div><div class="line">/Users/michael/learngit</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><em>pwd</em> 命令用于显示当前目录。</li>
+<li>如果你使用Windows系统，为了避免遇到各种莫名其妙的问题，请确保目录名（包括父目录）不包含中文。<br>第二步，通过git init 命令把这个目录变成git可以管理的仓库：</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git init</div><div class="line">Initialized empty Git repository in /Users/michael/learngit/.git/</div></pre></td></tr></table></figure>
+<h3 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h3><blockquote>
+<ul>
+<li>首先这里再明确一下，所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。</li>
+<li>因为文本是有编码的，比如中文有常用的GBK编码，日文有Shift_JIS编码，如果没有历史遗留问题，强烈建议使用标准的UTF-8编码，所有语言使用同一种编码，既没有冲突，又被所有平台所支持。</li>
+<li><strong>使用Windows的童鞋要特别注意：</strong>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。建议你下载Notepad++代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8 without BOM即可：</li>
+</ul>
+</blockquote>
+<p>例：放一个readme.txt</p>
+<blockquote>
+<p>用命令git add告诉Git，把文件添加到仓库<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git add readme.txt</div></pre></td></tr></table></figure></p>
+<p>执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<p>第二步，用命令git commit告诉Git，把文件提交到仓库：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git commit -m <span class="string">"wrote a readme file"</span></div><div class="line">[master (root-commit) cb926e7] wrote a readme file</div><div class="line"> <span class="number">1</span> file changed, <span class="number">2</span> insertions(+)</div><div class="line"> create mode <span class="number">100644</span> readme.txt</div></pre></td></tr></table></figure>
+<blockquote>
+<p>简单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。嫌麻烦不想输入-m “xxx”行不行？确实有办法可以这么干，但是强烈不建议你这么干，因为输入说明对自己对别人阅读都很重要。实在不想输入说明的童鞋请自行Google，我不告诉你这个参数。git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。<br>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git add file1.txt</div><div class="line">$ git add file2.txt file3.txt</div><div class="line">$ git commit -m <span class="string">"add 3 files."</span></div></pre></td></tr></table></figure>
+<h3 id="时光机穿梭"><a href="#时光机穿梭" class="headerlink" title="时光机穿梭"></a>时光机穿梭</h3><blockquote>
+<p>现在我改动readme.txt里的内容，就是增加了一排字<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>.hello</div><div class="line"><span class="number">2</span>.git</div><div class="line"><span class="number">3</span>.swust</div></pre></td></tr></table></figure></p>
+<p>现在，运行git status命令看看结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes not staged <span class="keyword">for</span> commit:</div><div class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to update what will be committed)</div><div class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> to discard changes in working directory)</div><div class="line"></div><div class="line">        modified:   readme.<span class="function">txt</span></div><div class="line"></div><div class="line">no changes added to <span class="title">commit</span> <span class="params">(use <span class="string">"git add"</span> and/or <span class="string">"git commit -a"</span>)</span></div></pre></td></tr></table></figure></p>
+<p>git status命令可以让我们时刻掌握仓库当前的状态，上面的命令告诉我们，readme.txt被修改过了，但还没有准备提交的修改,虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容，自然是很好的。比如你休假两周从国外回来，第一天上班时，已经记不清上次怎么修改的readme.txt，所以，需要用git diff这个命令看看：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git diff readme.txt</div><div class="line">diff --git a/readme.txt b/readme.txt</div><div class="line">index bc3cf98..<span class="number">4</span>a9596a <span class="number">100644</span></div><div class="line">--- a/readme.txt</div><div class="line">+++ b/readme.txt</div><div class="line">@@ -<span class="number">1</span>,<span class="number">2</span> +<span class="number">1</span>,<span class="number">3</span> @@</div><div class="line"> <span class="number">1</span>.hello</div><div class="line">-<span class="number">2</span>.git</div><div class="line">\ No newline at end of file</div><div class="line">+<span class="number">2</span>.git</div><div class="line">+<span class="number">3</span>.swust</div><div class="line">\ No newline at end of file</div></pre></td></tr></table></figure>
+<blockquote>
+<p>git diff就是查看difference,显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，修改了2.git和增加了3.swust，知道了对readme.txt做了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是git add，同样没有任何输出，再执行第二步git commit之前，我们再运行git status看看当前仓库的状态：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes to be committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</div><div class="line"></div><div class="line">        modified:   readme.txt</div></pre></td></tr></table></figure></p>
+<p>git status 告诉我们，将要被提交的修改包括readme.txt，下一步，就可以放心的提交了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git commit -m <span class="string">"add 3.swust"</span></div><div class="line">[master b1b20a2] add <span class="number">3</span>.swust</div><div class="line"> <span class="number">1</span> file changed, <span class="number">2</span> insertions(+), <span class="number">1</span> deletion(-)</div></pre></td></tr></table></figure></p>
+<p>提交后，我们再用git status命令查看仓库的当前状态：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">nothing to commit, working directory clean</div></pre></td></tr></table></figure></p>
+<p>git 告诉我们当前没有需要提交的修改，而且，工作目录是干净（working directory clean）的</p>
+<p>小结：</p>
+<ul>
+<li><strong><em>要随时掌握工作区的状态，使用git status命令。</em></strong></li>
+<li><strong><em>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。</em></strong></li>
+</ul>
+</blockquote>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><blockquote>
+<p>现在，把ream.txt里的内容改为,练习一遍提交<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git is a distributed version control system.</div><div class="line">Git is free software distributed under the GPL.</div></pre></td></tr></table></figure></p>
+<p>像这样，你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。<br>当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用git log命令查看：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ git log</div><div class="line">commit dcc026ea340637919cf088247f3eb675d1ab58e9</div><div class="line">Author: 王家兴 &lt;<span class="number">15883162175</span>@<span class="number">163</span>.com&gt;</div><div class="line">Date:   Fri Mar <span class="number">17</span> <span class="number">11</span>:<span class="number">19</span>:<span class="number">01</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    change content</div><div class="line"></div><div class="line">commit b1b20a29a9568558ea689102cd023efddc712057</div><div class="line">Author: 王家兴 &lt;<span class="number">15883162175</span>@<span class="number">163</span>.com&gt;</div><div class="line">Date:   Fri Mar <span class="number">17</span> <span class="number">11</span>:<span class="number">10</span>:<span class="number">24</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    add <span class="number">3</span>.swust</div><div class="line"></div><div class="line">commit <span class="number">8</span>b5a6a35cc6c45388fcc8cfa7f89015b57548049</div><div class="line">Author: 王家兴 &lt;<span class="number">15883162175</span>@<span class="number">163</span>.com&gt;</div><div class="line">Date:   Fri Mar <span class="number">17</span> <span class="number">10</span>:<span class="number">53</span>:<span class="number">16</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    wrote a readme file</div></pre></td></tr></table></figure>
+<blockquote>
+<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交,如果嫌输出信息太多，看得眼花缭乱的，可以试试加上–pretty=oneline参数：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git log --pretty=oneline</div><div class="line">dcc026ea340637919cf088247f3eb675d1ab58e9 change content</div><div class="line">b1b20a29a9568558ea689102cd023efddc712057 add <span class="number">3</span>.swust</div><div class="line"><span class="number">8</span>b5a6a35cc6c45388fcc8cfa7f89015b57548049 wrote a readme file</div></pre></td></tr></table></figure>
+<blockquote>
+<p>需要友情提示的是，你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。<br>每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：</p>
+</blockquote>
+<p>回退操作</p>
+<blockquote>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交dcc026ea340637919cf088247f3eb675d1ab58e9（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
+<ul>
+<li><strong><em>git reset –hard HEAD^ </em></strong>    回退上一版本</li>
+<li><strong><em>git reset –hard [commit id]</em></strong> 重置到指定版本</li>
+<li><strong><em>git log </em></strong>  可以查看所有commit id</li>
+<li><strong><em> git reflog</em></strong> 已回退到以前的版本，当你关掉了电脑，第二天早上想恢复到新版本时，可以用这个命令找你要的commit id</li>
+</ul>
+</blockquote>
+<p>小结：</p>
+<blockquote>
+<ul>
+<li>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。</li>
+<li>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</li>
+<li>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</li>
+</ul>
+</blockquote>
+<h1 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h1><blockquote>
+<p>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。</p>
+<ul>
+<li><strong><em>工作区（Working Directory）</em></strong>就是你在电脑里能看到的目录，比如我的HelloGit文件夹就是一个工作区</li>
+<li>.<strong><em>版本库（Repository）</em></strong>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。</li>
+</ul>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/001384907702917346729e9afbf4127b6dfbae9207af016000/0" alt=""></p>
+<blockquote>
+<p>前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<ul>
+<li>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；</li>
+<li>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</li>
+</ul>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+</blockquote>
+<h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><blockquote>
+<p>第一次修改 -&gt; git add -&gt; 第二次修改 -&gt; git add -&gt; git commit</p>
+</blockquote>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><blockquote>
+<p>git checkout – file可以丢弃工作区的修改：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -- readme.txt</div></pre></td></tr></table></figure>
+<blockquote>
+<p>命令git checkout – readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：</p>
+<ul>
+<li>一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
+<li>一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</li>
+</ul>
+</blockquote>
+<p><img src="http://github.liaoxuefeng.com/sinaweibopy/video/discard-changes-of-working-dir.mp4" alt=""></p>
+<blockquote>
+<p>只是修改后并且Git add到暂存区，还没有提交时，撤销修改：<br>用命令<strong><em>git reset HEAD file可以把暂存区的修改撤销掉（unstage）</em></strong>，重新放回工作区：<br>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<p>-场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
+<ul>
+<li>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</li>
+<li>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库</li>
+</ul>
+</blockquote>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><blockquote>
+<p>在Git中，删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交.然后直接在文件管理器把test.txt删了，然后git status命令会立刻告诉你哪些文件被删除了，现在你有两个选择</p>
+<ul>
+<li>一是确实要从版本库中删除文件，那就用命令git rm file删掉，然后git commit 提交删除修改。</li>
+<li>二是删错了，因为版本库里还有，所以可以很轻松地把误删的文件恢复的最新版本。git checkout – file <strong><em>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</em></strong></li>
+</ul>
+</blockquote>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><blockquote>
+<p><strong><em>第1步</em></strong>：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。<br><strong><em>第二步</em></strong> 登陆GitHub，打开“Account settings”，“SSH Keys”页面,然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容</p>
+</blockquote>
+<h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><blockquote>
+<p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
+<ul>
+<li>首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库：<br><img src="http://www.liaoxuefeng.com/files/attachments/0013849084639042e9b7d8d927140dba47c13e76fe5f0d6000/0" alt=""></li>
+<li>在Repository name填入HelloGit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：<br><img src="http://www.liaoxuefeng.com/files/attachments/0013849084720379a3eae576b9f417da2add578c8612a2e000/0" alt=""></li>
+</ul>
+<p>目前，在GitHub上的这个HelloGit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。</p>
+<ul>
+<li>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</li>
+<li>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</li>
+<li>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</li>
+<li>分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</li>
+</ul>
+</blockquote>
+<p>###　从远程库克隆</p>
+<blockquote>
+<ul>
+<li>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。例：git clone git@github.com:michaelliao/gitskills.git 。如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</li>
+<li>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</li>
+</ul>
+</blockquote>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><h5 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h5><blockquote>
+<p>在版本回退里，你已经知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。<br>一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：<br><img src="http://www.liaoxuefeng.com/files/attachments/0013849087937492135fbf4bbd24dfcbc18349a8a59d36d000/0" alt=""></p>
+<p>每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长.<br>当我们创建新的分支，例如dev时，Git新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上.<br><img src="http://www.liaoxuefeng.com/files/attachments/001384908811773187a597e2d844eefb11f5cf5d56135ca000/0" alt=""></p>
+<p>你看，Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变.<br>假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/00138490883510324231a837e5d4aee844d3e4692ba50f5000/0" alt=""></p>
+<blockquote>
+<p>所以Git合并分支也很快！就改改指针，工作区内容也不变！合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支</p>
+<ul>
+<li>Git鼓励大量使用分支：</li>
+<li>查看分支：git branch</li>
+<li>创建分支：git branch <name></name></li>
+<li>切换分支：git checkout <name></name></li>
+<li>创建+切换分支：git checkout -b <name></name></li>
+<li>合并某分支到当前分支：git merge <name></name></li>
+<li>删除分支：git branch -d <name></name></li>
+</ul>
+</blockquote>
+<h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><blockquote>
+<p>如果master 和其它分支有冲突，则不能合并分支成功。</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/001384909115478645b93e2b5ae4dc78da049a0d1704a41000/0" alt=""></p>
+<blockquote>
+<p>他会提示哪个文件内容有冲突，必须手动解决冲突后再提交，git status也可以告诉我们冲突的文件，Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们处理好冲突后保存再提交即可解决冲突</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/00138490913052149c4b2cd9702422aa387ac024943921b000/0" alt=""></p>
+<blockquote>
+<p>所以 <strong><em>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。用git log –graph命令可以看到分支合并图。</em></strong></p>
+</blockquote>
+<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><blockquote>
+<p>通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
+<p><strong><em>准备合并dev分支，请注意–no-ff参数，表示禁用Fast forward：</em></strong></p>
+<ul>
+<li>git merge –no-ff -m “merge with no-ff” dev<br>因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</li>
+</ul>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/001384909222841acf964ec9e6a4629a35a7a30588281bb000/0" alt=""></p>
+<blockquote>
+<p>Git分支十分强大，在团队开发中应该充分应用。合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+</blockquote>
+<h4 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h4><blockquote>
+<ul>
+<li>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；</li>
+<li>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。</li>
+</ul>
+</blockquote>
+<p>####　feature分支</p>
+<blockquote>
+<p>-开发一个新feature，最好新建一个分支；</p>
+<ul>
+<li>如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除。</name></li>
+</ul>
+</blockquote>
+<h4 id="tag标签"><a href="#tag标签" class="headerlink" title="tag标签"></a>tag标签</h4><blockquote>
+<ul>
+<li>命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id</name></li>
+<li>git tag -a <tagname> -m “blablabla…”可以指定标签信息</tagname></li>
+<li>git tag -s <tagname> -m “blablabla…”可以用PGP签名标签</tagname></li>
+<li>命令git tag可以查看所有标签<br>-命令git push origin <tagname>可以推送一个本地标签；<br>-命令git push origin –tags可以推送全部未推送过的本地标签；<br>-命令git tag -d <tagname>可以删除一个本地标签；</tagname></tagname></li>
+<li>命令git push origin :refs/tags/<tagname>可以删除一个远程标签。</tagname></li>
+</ul>
+</blockquote>
+<h4 id="使用Github"><a href="#使用Github" class="headerlink" title="使用Github"></a>使用Github</h4><blockquote>
+<ul>
+<li>在GitHub上，可以任意Fork开源仓库；</li>
+<li>自己拥有Fork后的仓库的读写权限；</li>
+<li>可以推送pull request给官方仓库来贡献代码。</li>
+</ul>
+</blockquote>
+<h4 id="忽略设置"><a href="#忽略设置" class="headerlink" title="忽略设置"></a>忽略设置</h4><blockquote>
+<ul>
+<li>忽略某些文件时，需要编写.gitignore</li>
+<li>.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/版本控制/" rel="tag"># 版本控制</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/《java核心技术卷一》第四章 对象与类/" rel="next" title="《java核心技术卷一》第四章">
+                <i class="fa fa-chevron-left"></i> 《java核心技术卷一》第四章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/F_2013_323.jpg"
+               alt="newtrekWang" />
+          <p class="site-author-name" itemprop="name">newtrekWang</p>
+          <p class="site-description motion-element" itemprop="description">一念起，天涯咫尺；一念灭，咫尺天涯。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git学习笔记"><span class="nav-number">1.</span> <span class="nav-text">git学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集中式和分布式版本控制系统有什么区别呢？"><span class="nav-number">1.1.</span> <span class="nav-text">集中式和分布式版本控制系统有什么区别呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建版本库"><span class="nav-number">1.3.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把文件添加到版本库"><span class="nav-number">1.4.</span> <span class="nav-text">把文件添加到版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时光机穿梭"><span class="nav-number">1.5.</span> <span class="nav-text">时光机穿梭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">1.6.</span> <span class="nav-text">版本回退</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number"></span> <span class="nav-text">工作区和暂存区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">0.1.</span> <span class="nav-text">管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">0.2.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">0.3.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库"><span class="nav-number">0.4.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加远程库"><span class="nav-number">0.5.</span> <span class="nav-text">添加远程库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">0.6.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建与合并分支"><span class="nav-number">0.6.0.1.</span> <span class="nav-text">创建与合并分支</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决冲突"><span class="nav-number">0.6.1.</span> <span class="nav-text">解决冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">0.7.</span> <span class="nav-text">分支管理策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bug分支"><span class="nav-number">0.7.1.</span> <span class="nav-text">Bug分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tag标签"><span class="nav-number">0.7.2.</span> <span class="nav-text">tag标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Github"><span class="nav-number">0.7.3.</span> <span class="nav-text">使用Github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#忽略设置"><span class="nav-number">0.7.4.</span> <span class="nav-text">忽略设置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">newtrekWang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
