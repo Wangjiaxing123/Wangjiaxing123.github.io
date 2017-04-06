@@ -1,400 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
-  
-
-  
+    <!--Description-->
     
-    
-  
-
-  
-    
-      
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
     
 
+    <!--Author-->
     
-  
-
-  
-
-  
-    
-      
+        <meta name="author" content="newtrekWang">
     
 
+    <!--Open Graph Title-->
     
-  
-
-  
-    
-      
+        <meta property="og:title" content="android IPC机制实现方式之AIDL"/>
     
 
+    <!--Open Graph Description-->
     
-  
-
-  
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
     
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>android IPC机制实现方式之AIDL - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
 
 
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="android IPC机制实现方式之AIDLIPC
-进程间通信或者跨进程通信，是指链各个进程之间进行数据交互的过程。
-线程是CPU调度的最小丹云，同时线程是一种有限的资源；
-进程是指一个执行单元，在PC和移动设备上是指一个程序或者一个应用，一个进程可以包含多个进程，因此进程和线程是包含和被包含的关系。
-IPC的使用场景只有面对多进程时，才需要考虑进程间通信，多进程的情况分为两种：
-
-.一个应用因为">
-<meta property="og:type" content="article">
-<meta property="og:title" content="android IPC机制实现方式之AIDL">
-<meta property="og:url" content="http://yoursite.com/2017/03/25/android IPC机制实现方式之AIDL/index.html">
-<meta property="og:site_name" content="生命在于折腾">
-<meta property="og:description" content="android IPC机制实现方式之AIDLIPC
-进程间通信或者跨进程通信，是指链各个进程之间进行数据交互的过程。
-线程是CPU调度的最小丹云，同时线程是一种有限的资源；
-进程是指一个执行单元，在PC和移动设备上是指一个程序或者一个应用，一个进程可以包含多个进程，因此进程和线程是包含和被包含的关系。
-IPC的使用场景只有面对多进程时，才需要考虑进程间通信，多进程的情况分为两种：
-
-.一个应用因为">
-<meta property="og:image" content="http://ojgs96t5i.bkt.clouddn.com/QQ20170325173924.jpg">
-<meta property="og:updated_time" content="2017-03-25T10:01:04.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android IPC机制实现方式之AIDL">
-<meta name="twitter:description" content="android IPC机制实现方式之AIDLIPC
-进程间通信或者跨进程通信，是指链各个进程之间进行数据交互的过程。
-线程是CPU调度的最小丹云，同时线程是一种有限的资源；
-进程是指一个执行单元，在PC和移动设备上是指一个程序或者一个应用，一个进程可以包含多个进程，因此进程和线程是包含和被包含的关系。
-IPC的使用场景只有面对多进程时，才需要考虑进程间通信，多进程的情况分为两种：
-
-.一个应用因为">
-<meta name="twitter:image" content="http://ojgs96t5i.bkt.clouddn.com/QQ20170325173924.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"right","display":"always"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2017/03/25/android IPC机制实现方式之AIDL/"/>
-
-
-
-
-
-  <title> android IPC机制实现方式之AIDL | 生命在于折腾 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<body>
 
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
 
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">生命在于折腾</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-    
-      <p class="site-subtitle">keep looking!</p>
-    
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
 </div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
 </nav>
 
+<div class="container">
 
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
 
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/25/android IPC机制实现方式之AIDL/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="newtrekWang">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/F_2013_323.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="生命在于折腾">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="生命在于折腾" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-        
-          <h1 class="post-title" itemprop="name headline">
+    </div>
+</header>
+
+        <section class="main">
             
-            
-              
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/03/25/android IPC机制实现方式之AIDL/">
                 android IPC机制实现方式之AIDL
-              
+            </a>
+        </h1>
+        <div class="post-info">
             
-          </h1>
+                <span class="date">2017-03-25</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/AIDL/">AIDL</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
         
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T18:04:21+08:00">
-                2017-03-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AIDL/" itemprop="url" rel="index">
-                    <span itemprop="name">AIDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
+        <!-- Post Content -->
         <h1 id="android-IPC机制实现方式之AIDL"><a href="#android-IPC机制实现方式之AIDL" class="headerlink" title="android IPC机制实现方式之AIDL"></a>android IPC机制实现方式之AIDL</h1><h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h3><blockquote>
 <p>进程间通信或者跨进程通信，是指链各个进程之间进行数据交互的过程。</p>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>是CPU调度的最小丹云，同时线程是一种有限的资源；</p>
@@ -457,333 +223,176 @@ IPC的使用场景只有面对多进程时，才需要考虑进程间通信，�
 <p>那既然远程Service这么好用，干脆以后我们把所有的Service都转换成远程Service吧，还省得再开启线程了。其实不然，远程Service非但不好用，甚至可以称得上是较为难用。一般情况下如果可以不使用远程Service，就尽量不要使用它。</p>
 </blockquote>
 
-      
     </div>
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/03/25/android四大组件之Service/" rel="next" title="android四大组件之Service">
-                <i class="fa fa-chevron-left"></i> android四大组件之Service
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/排序/" rel="prev" title="java实现基础算法">
-                java实现基础算法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-          
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
     
-  </div>
 
+    
 
-        </div>
+    <!-- Comments -->
+    
+    <div class="comments">
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
     </div>
-  </div>
+    
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/F_2013_323.jpg"
-               alt="newtrekWang" />
-          <p class="site-author-name" itemprop="name">newtrekWang</p>
-          <p class="site-description motion-element" itemprop="description">一念起，天涯咫尺；一念灭，咫尺天涯。</p>
-        </div>
-        <nav class="site-state motion-element">
-        
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">23</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">8</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#android-IPC机制实现方式之AIDL"><span class="nav-number">1.</span> <span class="nav-text">android IPC机制实现方式之AIDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPC"><span class="nav-number">1.0.1.</span> <span class="nav-text">IPC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.1.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.2.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPC的使用场景"><span class="nav-number">1.3.</span> <span class="nav-text">IPC的使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android中的多进程模式"><span class="nav-number">1.4.</span> <span class="nav-text">android中的多进程模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#跨进程通信的方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">跨进程通信的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小目标"><span class="nav-number">1.4.2.</span> <span class="nav-text">小目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建AIDL"><span class="nav-number">1.4.3.</span> <span class="nav-text">创建AIDL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.5.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
-            
-
-          </div>
+</div>
         </section>
-      <!--/noindex-->
-      
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">newtrekWang</span>
 </div>
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+<!-- Footer -->
+<div class="push"></div>
 
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/03/25/android IPC机制实现方式之AIDL/">android IPC机制实现方式之AIDL</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
+            </li>
+            
+        </ul>
     </div>
-  </div>
 
-  
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/Git/">Git</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/AIDL/">AIDL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android界面/">android界面</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android四大组件/">android四大组件</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
 
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
 </script>
 
 
 
-
-
-
-
-
-
-  
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-      <!-- UY BEGIN -->
-      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
-      <!-- UY END -->
-  
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-
 </body>
+
 </html>
