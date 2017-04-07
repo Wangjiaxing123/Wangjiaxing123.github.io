@@ -170,6 +170,7 @@
 </ul>
 </blockquote>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] insert(<span class="keyword">int</span>[] a)&#123;</div><div class="line">        <span class="keyword">if</span> (a.length&lt;<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">return</span> a;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i&lt;a.length)&#123;</div><div class="line">            temp=a[i];</div><div class="line">            <span class="keyword">for</span> (j=i-<span class="number">1</span>;((j&gt;=<span class="number">0</span>)&amp;&amp;(temp&lt;a[j]));j--)&#123;</div><div class="line">                    a[j+<span class="number">1</span>]=a[j];</div><div class="line">            &#125;</div><div class="line"><span class="comment">//            因为j已经上一次已经减一了</span></div><div class="line">            a[j+<span class="number">1</span>]=temp;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <blockquote>
 <p>插入排序对于大规模的乱序数组，插入排序会很慢，因为它只会交换相邻的元素，元素只能一点一点的从数组的一段移动到另一端。</p>
 </blockquote>
@@ -231,6 +232,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -240,10 +245,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -257,7 +258,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -265,7 +266,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

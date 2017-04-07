@@ -161,13 +161,13 @@
         
 
         <!-- Post Content -->
-        <h3 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb [-d|-e|-s&lt;serialNumber&gt;] &lt;command&gt;</div></pre></td></tr></table></figure>
+        <h1 id="android-adb常用命令"><a href="#android-adb常用命令" class="headerlink" title="android adb常用命令"></a>android adb常用命令</h1><h3 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb [-d|-e|-s&lt;serialNumber&gt;] &lt;command&gt;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>命令通用格式,adb是必须的，接下来方括号[]里面的内容不是必须的，最后才是我们需要执行的命令操作，例如 adb -s emulator-5554 install xxxer.apk (这是安装xxx的意思)</p>
 <ul>
 <li>-d: 让唯一连接到该PC端的真实安卓设备执行命令，如果发现USB中连接有多部设备，将会报错</li>
 <li>-e: 让唯一连接到该PC端的模拟器执行命令，如果发现开启了多个模拟器，将会报错</li>
-<li>-s：通过设备的序列号进行指定设备执行命令<h3 id="部分命令"><a href="#部分命令" class="headerlink" title="部分命令"></a>部分命令</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取连接设备列表</span></div><div class="line">adb devices</div><div class="line"><span class="comment">//给设备安装应用</span></div><div class="line">adb install apk绝对路径（如D:<span class="comment">//test.apk）</span></div><div class="line"><span class="comment">//将数据从设备复制到PC中,形象地说就是把设备的数据拉（pull）到电脑上</span></div><div class="line">adb pull &lt;设备数据文件绝对路径，如（/sdcard/test.txt）&gt; &lt;本地放文件的路径（如D:<span class="comment">//）&gt;</span></div><div class="line"><span class="comment">//将数据从PC端复制到设备中，形象地说就是把电脑的数据推（push）到设备上</span></div><div class="line">adb push &lt;本地文件的路径（如D:<span class="comment">//test.txt）&gt; &lt;设备放文件绝对路径，如（/sdcard/）&gt;</span></div><div class="line"><span class="comment">//获取连接到的手机的序列号</span></div><div class="line">adb get-serialno</div><div class="line"><span class="comment">//获取指定设备的连接状态</span></div><div class="line">adb -s &lt;serialNumber&gt; get-state</div><div class="line"><span class="comment">//adb-server的开启与关闭</span></div><div class="line">adb kill-server</div><div class="line">adb start-server</div><div class="line"><span class="comment">//屏幕录像</span></div><div class="line">adb shell screenrecord /sdcard/test.mp4</div></pre></td></tr></table></figure></li>
+<li>-s：通过设备的序列号进行指定设备执行命令<h3 id="部分命令"><a href="#部分命令" class="headerlink" title="部分命令"></a>部分命令</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line"></div><div class="line"><span class="comment">//获取连接设备列表</span></div><div class="line">adb devices</div><div class="line"><span class="comment">//给设备安装应用</span></div><div class="line">adb install apk绝对路径（如D:<span class="comment">//test.apk）</span></div><div class="line"><span class="comment">//将数据从设备复制到PC中,形象地说就是把设备的数据拉（pull）到电脑上</span></div><div class="line">adb pull &lt;设备数据文件绝对路径，如（/sdcard/test.txt）&gt; &lt;本地放文件的路径（如D:<span class="comment">//）&gt;</span></div><div class="line"><span class="comment">//将数据从PC端复制到设备中，形象地说就是把电脑的数据推（push）到设备上</span></div><div class="line">adb push &lt;本地文件的路径（如D:<span class="comment">//test.txt）&gt; &lt;设备放文件绝对路径，如（/sdcard/）&gt;</span></div><div class="line"><span class="comment">//获取连接到的手机的序列号</span></div><div class="line">adb get-serialno</div><div class="line"><span class="comment">//获取指定设备的连接状态</span></div><div class="line">adb -s &lt;serialNumber&gt; get-state</div><div class="line"><span class="comment">//adb-server的开启与关闭</span></div><div class="line">adb kill-server</div><div class="line">adb start-server</div><div class="line"><span class="comment">//屏幕录像</span></div><div class="line">adb shell screenrecord /sdcard/test.mp4</div></pre></td></tr></table></figure></li>
 </ul>
 </blockquote>
 
@@ -221,6 +221,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -230,10 +234,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -247,7 +247,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -255,7 +255,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

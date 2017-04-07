@@ -165,6 +165,7 @@
 <p>引用启动时会最先加载window,window的背景是可以在style里设置的，默认的windowBackground是白色的，一旦应用很大，初始化操作很多，应用冷启动时就会出现白屏很久，体验效果就不是很好，所以可以把windowBackground换为自己的背景，实现Splash,谷歌的Youtube貌似就是这样的。</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="定义SplashTheme"><a href="#定义SplashTheme" class="headerlink" title="定义SplashTheme"></a>定义SplashTheme</h4><p>windowBackground 只能放drawable资源<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"SpashTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.NoActionBar"</span>&gt;</span><span class="xml"></span></div><div class="line">      <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@drawable/splash<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
 </blockquote>
+<a id="more"></a>
 <h4 id="定义SplashActivity"><a href="#定义SplashActivity" class="headerlink" title="定义SplashActivity"></a>定义SplashActivity</h4><blockquote>
 <p>在onCreate里直接写跳转，不用setContentView,所以不用审么布局文件xml那些，也不用渲染什么控件，直接跳转，节省资源。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">       Intent intent=<span class="keyword">new</span> Intent(<span class="keyword">this</span>,WelcomeActivity.class);</div><div class="line">       startActivity(intent);</div><div class="line">       finish();</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
@@ -227,6 +228,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -236,10 +241,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -253,7 +254,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -261,7 +262,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

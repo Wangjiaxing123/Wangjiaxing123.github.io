@@ -169,10 +169,8 @@
 </blockquote>
 <h3 id="rxjava-是什么"><a href="#rxjava-是什么" class="headerlink" title="rxjava 是什么"></a>rxjava 是什么</h3><blockquote>
 <p><strong>定义</strong>：a library for composing asynchronous and event-based programs using observable sequences for the Java VM”（一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库）<br><strong>优势：</strong>随着程序逻辑变得越来越复杂，它依然能够保持简洁。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h5 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h5><p>这里我直接用扔物线的图<br><img src="http://ww3.sinaimg.cn/mw1024/52eb2279jw1f2rx4ay0hrg20ig08wk4q.gif" alt=""></p>
-</blockquote>
-<h4 id="普通使用"><a href="#普通使用" class="headerlink" title="普通使用"></a>普通使用</h4><blockquote>
-<p>构造被观察者</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h5 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h5><p>这里我直接用扔物线的图<br><img src="http://ww3.sinaimg.cn/mw1024/52eb2279jw1f2rx4ay0hrg20ig08wk4q.gif" alt=""><br><a id="more"></a></p>
+<h4 id="普通使用"><a href="#普通使用" class="headerlink" title="普通使用"></a>普通使用</h4><p>构造被观察者</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Observable&lt;Integer&gt; observable=Observable.create(<span class="keyword">new</span> ObservableOnSubscribe&lt;Integer&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;Integer&gt; e)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">         <span class="comment">//这里的e专门发射事件，当发射过onComplete()，</span></div><div class="line">            <span class="comment">// 观察者接收到后，观察者将不会再接收事件</span></div><div class="line">            e.onNext(<span class="number">1</span>);</div><div class="line">            e.onNext(<span class="number">2</span>);</div><div class="line">            e.onNext(<span class="number">3</span>);</div><div class="line">            e.onNext(<span class="number">4</span>);</div><div class="line">            e.onNext(<span class="number">5</span>);</div><div class="line">            e.onComplete();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
 <p>构造观察者</p>
 </blockquote>
@@ -274,6 +272,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -283,10 +285,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -300,7 +298,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -308,7 +306,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

@@ -172,10 +172,11 @@
 <li>构造函数不对外开放，一般为private；</li>
 <li>通过一个静态方法或者枚举返回单例类对象；</li>
 <li>确保单例类的对象有且只有一个，尤其是在多线程环境下；</li>
-<li>确保单例类对象在反序列化时不会重新构建对象；</li>
+<li>确保单例类对象在反序列化时不会重新构建对象；<a id="more"></a>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance =<span class="keyword">new</span> Singleton();</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </blockquote>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance =<span class="keyword">new</span> Singleton();</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span> (instance==<span class="keyword">null</span>) &#123;</div><div class="line">			instance=<span class="keyword">new</span> Singleton();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>这里getInstance()方法添加了synchronized关键字，也就是getInstance()是一个同步方法，目的是保证在多线程情况下单例对象唯一的手段。这里会有个问题，即使instance已经被初始化，每次调用getInstance()方法都会进行同步，这样会消耗不必要的资源。</p>
@@ -244,6 +245,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -253,10 +258,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -270,7 +271,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -278,7 +279,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

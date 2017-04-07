@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="newtrekWang">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="android之对话框"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>android之对话框 - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/07/android之对话框/">
+                android之对话框
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-07</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/androidDialog/">androidDialog</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="android之对话框"><a href="#android之对话框" class="headerlink" title="android之对话框"></a>android之对话框</h2><blockquote>
+<p>对话框是提示用户作出决定或输入额外信息的小窗口。 对话框不会填充屏幕，通常用于需要用户采取行动才能继续执行的模式事件。</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>Dialog类是对话框的<strong>基类</strong>，但应该避免<strong>直接实例化Dialog,</strong>而是使用下列子类之一：</p>
+<ul>
+<li><strong>AlertDialog</strong>:此对话框可显示标题、最多三个按钮、可选择项列表或自定义布局。</li>
+<li><strong>DatePickerDialog</strong>或<strong>TimePickerDialog</strong>:此对话框带有允许用户选择日期或时间的预定义 UI</li>
+</ul>
+<p>谷歌官方建议使用 <strong>DialogFragment</strong> 用作对话框的容器，DialogFragment 类提供您创建对话框和管理其外观所需的所有控件，而不是调用 Dialog 对象上的方法。</p>
+</blockquote>
+<h3 id="创建对话框碎片"><a href="#创建对话框碎片" class="headerlink" title="创建对话框碎片"></a>创建对话框碎片</h3><blockquote>
+<p>您可以完成各种对话框设计—包括自定义布局以及对话框设计指南中描述的布局—通过扩展 <strong>DialogFragment</strong> 并在 <strong>onCreateDialog()</strong> 回调方法中创建 AlertDialog。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> <span class="meta">@NonNull</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Dialog <span class="title">onCreateDialog</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        AlertDialog.Builder builder=<span class="keyword">new</span> AlertDialog.Builder(getActivity());</div><div class="line"><span class="comment">//        builder模式构建Dialog</span></div><div class="line">        builder.setMessage(R.string.dialog_fire_missiles)</div><div class="line">                .setPositiveButton(R.string.fire, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</div><div class="line">                    <span class="comment">// FIRE ZE MISSILES!</span></div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .setNegativeButton(R.string.cancel, <span class="keyword">new</span> DialogInterface.OnClickListener() &#123;</div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(DialogInterface dialog, <span class="keyword">int</span> which)</span> </span>&#123;</div><div class="line">                    <span class="comment">// User cancelled the dialog</span></div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">        <span class="keyword">return</span> builder.create();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="构建提醒对话框"><a href="#构建提醒对话框" class="headerlink" title="构建提醒对话框"></a>构建提醒对话框</h3><h5 id="三个区域"><a href="#三个区域" class="headerlink" title="三个区域"></a>三个区域</h5><blockquote>
+<ul>
+<li><strong>1.标题</strong>：这是可选项，只应在内容区域被详细消息、列表或自定义布局占据时使用。 如需陈述的是一条简单消息或问题（如图 1 中的对话框），则不需要标题。</li>
+<li><strong>2.内容区域</strong>：它可以显示消息、列表或其他自定义布局</li>
+<li><strong>3.操作区域</strong>：对话框的操作按钮不应超过三个<h4 id="添加按钮"><a href="#添加按钮" class="headerlink" title="添加按钮"></a>添加按钮</h4></li>
+<li>肯定按钮</li>
+<li>否定按钮</li>
+<li>中性按钮<h4 id="添加列表"><a href="#添加列表" class="headerlink" title="添加列表"></a>添加列表</h4></li>
+<li>传统单选列表: setItems()</li>
+<li>永久性点选列表（单选按钮）</li>
+<li>永久性多选列表（复选框）<br>如果自定义item的布局，就要自己另外定义Adapter</li>
+</ul>
+</blockquote>
+<h4 id="创建自定义布局"><a href="#创建自定义布局" class="headerlink" title="创建自定义布局"></a>创建自定义布局</h4><blockquote>
+<p>如果您想让对话框具有自定义布局，请创建一个布局，然后通过调用 AlertDialog.Builder 对象上的 setView() 将其添加到 AlertDialog。默认情况下，自定义布局会填充对话框窗口，但您仍然可以使用 AlertDialog.Builder 方法来添加按钮和标题。</p>
+</blockquote>
+<h4 id="将事件传递回对话框的宿主"><a href="#将事件传递回对话框的宿主" class="headerlink" title="将事件传递回对话框的宿主"></a>将事件传递回对话框的宿主</h4><blockquote>
+<p>即在onAttach时绑定接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Use this instance of the interface to deliver action events</span></div><div class="line">   NoticeDialogListener mListener;</div><div class="line"></div><div class="line">   <span class="comment">// Override the Fragment.onAttach() method to instantiate the NoticeDialogListener</span></div><div class="line">   <span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onAttach(activity);</div><div class="line">       <span class="comment">// Verify that the host activity implements the callback interface</span></div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           <span class="comment">// Instantiate the NoticeDialogListener so we can send events to the host</span></div><div class="line">           mListener = (NoticeDialogListener) activity;</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassCastException e) &#123;</div><div class="line">           <span class="comment">// The activity doesn't implement the interface, throw exception</span></div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> ClassCastException(activity.toString()</div><div class="line">                   + <span class="string">" must implement NoticeDialogListener"</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h4 id="显示对话框"><a href="#显示对话框" class="headerlink" title="显示对话框"></a>显示对话框</h4><blockquote>
+<p>如果您想显示对话框，请创建一个 DialogFragment 实例并调用 show()，以传递对话框片段的 FragmentManager 和标记名称。第二个参数 “missiles” 是系统用于保存片段状态并在必要时进行恢复的唯一标记名称。 该标记还允许您通过调用 findFragmentByTag() 获取片段的句柄。</p>
+</blockquote>
+<h4 id="全屏显示对话框或将其显示为嵌入式片段"><a href="#全屏显示对话框或将其显示为嵌入式片段" class="headerlink" title="全屏显示对话框或将其显示为嵌入式片段"></a>全屏显示对话框或将其显示为嵌入式片段</h4><blockquote>
+<p>这个用得很少吧</p>
+<p>以上代码</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/03/25/android IPC机制实现方式之AIDL/">android IPC机制实现方式之AIDL</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/AIDL/">AIDL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android四大组件/">android四大组件</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

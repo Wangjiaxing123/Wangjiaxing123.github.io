@@ -180,6 +180,7 @@
 <li><strong><em>如果组件通过调用 startService() 启动服务（这会导致对 onStartCommand() 的调用），则服务将一直运行，直到服务使用 stopSelf() 自行停止运行，或由其他组件通过调用 stopService() 停止它为止;如果组件是通过调用 bindService() 来创建服务（且未调用 onStartCommand()，则服务只会在该组件与其绑定时运行。一旦该服务与所有客户端之间的绑定全部取消，系统便会销毁它</em></strong></li>
 </ul>
 </blockquote>
+<a id="more"></a>
 <h3 id="使用清单文件声明服务"><a href="#使用清单文件声明服务" class="headerlink" title="使用清单文件声明服务"></a>使用清单文件声明服务</h3><blockquote>
 <p>要声明服务，请添加 <service> 元素作为 <application> 元素的子元素</application></service></p>
 <h4 id="标签元素"><a href="#标签元素" class="headerlink" title="标签元素"></a>标签元素</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">service</span> <span class="attr">android:description</span>=<span class="string">"string resource"</span></span></div><div class="line">         <span class="attr">android:directBootAware</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</div><div class="line">         <span class="attr">android:enabled</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</div><div class="line">         <span class="attr">android:exported</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</div><div class="line">         <span class="attr">android:icon</span>=<span class="string">"drawable resource"</span></div><div class="line">         <span class="attr">android:isolatedProcess</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"]</div><div class="line">         <span class="attr">android:label</span>=<span class="string">"string resource"</span></div><div class="line">         <span class="attr">android:name</span>=<span class="string">"string"</span></div><div class="line">         <span class="attr">android:permission</span>=<span class="string">"string"</span></div><div class="line">         <span class="attr">android:process</span>=<span class="string">"string"</span> &gt;</div><div class="line">    . . .</div><div class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -297,6 +298,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -306,10 +311,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -323,7 +324,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -331,7 +332,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>

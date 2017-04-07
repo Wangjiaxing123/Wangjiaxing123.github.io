@@ -187,9 +187,10 @@
 <li>让View支持padding</li>
 <li>尽量不要在view中使用handler，没必要，因为View本身就提供了post系列的方法。</li>
 <li>View中如果有线程或者动画，需要及时停止。</li>
-<li>View带有滑动嵌套情时，需要处理好滑动冲突。</li>
+<li>View带有滑动嵌套情时，需要处理好滑动冲突。<a id="more"></a>
+<h1 id="View-的工作原理"><a href="#View-的工作原理" class="headerlink" title="View 的工作原理"></a>View 的工作原理</h1></li>
 </ol>
-<h1 id="View-的工作原理"><a href="#View-的工作原理" class="headerlink" title="View 的工作原理"></a>View 的工作原理</h1><h2 id="ViewRoot和DecorView"><a href="#ViewRoot和DecorView" class="headerlink" title="ViewRoot和DecorView"></a>ViewRoot和DecorView</h2><p>在ActivityThread中，当activity对象被创建完毕后，会将DecorView添加到Window中，同时会创建ViewRootImpl（ViewRoot）对象，并将ViewRoot对象和DecorView（顶级View）简历关联。</p>
+<h2 id="ViewRoot和DecorView"><a href="#ViewRoot和DecorView" class="headerlink" title="ViewRoot和DecorView"></a>ViewRoot和DecorView</h2><p>在ActivityThread中，当activity对象被创建完毕后，会将DecorView添加到Window中，同时会创建ViewRootImpl（ViewRoot）对象，并将ViewRoot对象和DecorView（顶级View）简历关联。</p>
 <p>View的绘制流程是从ViewRoot的performTraversals方法开始的，经过Measure,layout,draw三个流程才能最终将一个View绘制出来</p>
 <ul>
 <li>measure  测量View的宽和高，完成后，可以通过getMeasuredWidth和getMeasuredHeight方法获得View测量后的宽和高，在大多情况下，它都等同于最终的宽和高，除了某些特殊情况。</li>
@@ -306,6 +307,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
@@ -315,10 +320,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/20/git学习笔记/">git学习笔记</a>
             </li>
             
         </ul>
@@ -332,7 +333,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -340,7 +341,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>
