@@ -139,6 +139,106 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/01/17/通用格式/">
+                android adb常用命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-01-17</span>
+            
+            
+                <a href="http://yoursite.com/2017/01/17/通用格式/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Android/">Android</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="android-adb常用命令"><a href="#android-adb常用命令" class="headerlink" title="android adb常用命令"></a>android adb常用命令</h1><h3 id="通用格式"><a href="#通用格式" class="headerlink" title="通用格式"></a>通用格式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb [-d|-e|-s&lt;serialNumber&gt;] &lt;command&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>命令通用格式,adb是必须的，接下来方括号[]里面的内容不是必须的，最后才是我们需要执行的命令操作，例如 adb -s emulator-5554 install xxxer.apk (这是安装xxx的意思)</p>
+<ul>
+<li>-d: 让唯一连接到该PC端的真实安卓设备执行命令，如果发现USB中连接有多部设备，将会报错</li>
+<li>-e: 让唯一连接到该PC端的模拟器执行命令，如果发现开启了多个模拟器，将会报错</li>
+<li>-s：通过设备的序列号进行指定设备执行命令<h3 id="部分命令"><a href="#部分命令" class="headerlink" title="部分命令"></a>部分命令</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;!-- more --&gt;</div><div class="line"></div><div class="line"><span class="comment">//获取连接设备列表</span></div><div class="line">adb devices</div><div class="line"><span class="comment">//给设备安装应用</span></div><div class="line">adb install apk绝对路径（如D:<span class="comment">//test.apk）</span></div><div class="line"><span class="comment">//将数据从设备复制到PC中,形象地说就是把设备的数据拉（pull）到电脑上</span></div><div class="line">adb pull &lt;设备数据文件绝对路径，如（/sdcard/test.txt）&gt; &lt;本地放文件的路径（如D:<span class="comment">//）&gt;</span></div><div class="line"><span class="comment">//将数据从PC端复制到设备中，形象地说就是把电脑的数据推（push）到设备上</span></div><div class="line">adb push &lt;本地文件的路径（如D:<span class="comment">//test.txt）&gt; &lt;设备放文件绝对路径，如（/sdcard/）&gt;</span></div><div class="line"><span class="comment">//获取连接到的手机的序列号</span></div><div class="line">adb get-serialno</div><div class="line"><span class="comment">//获取指定设备的连接状态</span></div><div class="line">adb -s &lt;serialNumber&gt; get-state</div><div class="line"><span class="comment">//adb-server的开启与关闭</span></div><div class="line">adb kill-server</div><div class="line">adb start-server</div><div class="line"><span class="comment">//屏幕录像</span></div><div class="line">adb shell screenrecord /sdcard/test.mp4</div></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/01/12/自定义View（一）/">
+                自定义View
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-01-12</span>
+            
+            
+                <a href="http://yoursite.com/2017/01/12/自定义View（一）/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Android/">Android</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="自定义View的分类"><a href="#自定义View的分类" class="headerlink" title="自定义View的分类"></a>自定义View的分类</h1><blockquote>
+<p> 笔记大多数内容都来自于《android 开发艺术探索》，我只是做了简化，加了些自己的理解</p>
+</blockquote>
+<ul>
+<li>继承View重写onDraw方法<ul>
+<li>主要用于实现一些不规则的效果，采用这种方式需要自己支持wrap_content,并且padding也需要自己处理。</li>
+</ul>
+</li>
+<li>继承ViewGroup派生特殊的Layout<ul>
+<li>主要用于实现自定义的布局，即除了LinearLayout,RelativeLayout,FrameLayout这几种系统的布局之外，重新定义一种新布局。这种方式需要合适地处理viewGroup的测量，布局这两个过程，并同时处理子元素的测量和布局过程。</li>
+</ul>
+</li>
+<li>继承特定的View（如TextVeiw）<ul>
+<li>常见方法，一般用于扩展某种已有的View的功能，比如TextView，这种方法比较容易实现，而且不需要自己支持wrap_content和padding等。</li>
+</ul>
+</li>
+<li>继承特定的ViewGroup（如LinearLayout）<ul>
+<li>当某种效果看起来很像几种View组合在一起的时候，可以采用这种方法实现，且不需要自己处理ViewGrounp的测量和布局这两个过程。<h1 id="自定义Veiw须知"><a href="#自定义Veiw须知" class="headerlink" title="自定义Veiw须知"></a>自定义Veiw须知</h1></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>让View支持wrap_content</li>
+<li>让View支持padding</li>
+<li>尽量不要在view中使用handler，没必要，因为View本身就提供了post系列的方法。</li>
+<li>View中如果有线程或者动画，需要及时停止。</li>
+<li>View带有滑动嵌套情时，需要处理好滑动冲突。
+        </div>
+        <a href="/2017/01/12/自定义View（一）/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/01/07/自定义Dialog样式/">
                 自定义Dialog样式
             </a>
@@ -331,19 +431,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/使用ContentProvider，主要有以下几个理由：/">android四大组件之ContentProvid</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/25/android IPC机制实现方式之AIDL/">android IPC机制实现方式之AIDL</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/03/25/android四大组件之Service/">android四大组件之Service</a>
             </li>
             
         </ul>
@@ -357,7 +457,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/android面试/">android面试</a>
         </li>
         
         <li>
@@ -369,7 +469,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
         </li>
         
     </ul>

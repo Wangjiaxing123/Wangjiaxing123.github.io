@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="newtrekWang">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="android之SQLite笔记"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>android之SQLite笔记 - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/08/android之SQLite笔记/">
+                android之SQLite笔记
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-08</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/SQLite/">SQLite</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><blockquote>
+<ul>
+<li>继承SQLiteOpenHelper，通过SQLiteOpenHelper可以方便的管理SQLiteDatabase</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDataBaseHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String CREATE_TABLE_SQL=<span class="string">"create table dict (_id integer primary key autoincrement,word text,detail text)"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyDataBaseHelper</span><span class="params">(Context context, String name, <span class="keyword">int</span> version)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(context, name, <span class="keyword">null</span>, version);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span> </span>&#123;</div><div class="line"><span class="comment">//        第一次使用数据库是自动建表</span></div><div class="line">        db.execSQL(CREATE_TABLE_SQL);</div><div class="line">    &#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 升级数据是调用</div><div class="line"> */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion, <span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>获取可写数据库：SQLiteDatabase database=databaseHelper.getWritableDatabase();</li>
+<li>获取可读数据库： SQLiteDatabase db=databaseHelper.getReadableDatabase();</li>
+</ul>
+</blockquote>
+<h3 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.executeSQL(String sql); </div><div class="line">db.executeSQL(String sql, Object[] bindArgs);<span class="comment">//sql语句中使用占位符，然后第二个参数是实际的参数集</span></div></pre></td></tr></table></figure>
+<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.insert(String table, String nullColumnHack, ContentValues values);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>第一个参数都是表示要操作的表名；insert中的第二个参数表示强行插入null值的数据列的列名，当values参数为空或不含任何key-value对时该参数有效；insert中的第三个参数是ContentValues类型的变量，是键值对组成的Map，key代表列名，value代表该列要插入的值；插入方法执行后会返回新添记录的行号，该行号是一个内部值，与主键id无关，发生错误返回-1；</li>
+<li>通过SQL语句也可实现：比如：db.execSQL(“insert into news_info values(null,?,?)”,new String[]{title,content})</li>
+</ul>
+</blockquote>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.update(String table, Contentvalues values, String whereClause, String whereArgs);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>table：表名</li>
+<li>values: 想更新的数据</li>
+<li>whereClause:满足whereClause子句的记录将会被更新</li>
+<li>whereArgs: 用于为whereClause子句传入参数</li>
+</ul>
+</blockquote>
+<p>例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> result=db.update(<span class="string">"news_info"</span>,values,<span class="string">"_id&gt;?"</span>,<span class="keyword">new</span> Integer[]&#123;<span class="number">20</span>&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.delete(String table, String whereClause, String whereArgs);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>table: 表名</li>
+<li>whereClause：满足whereClause子句的记录将会被删除</li>
+<li>whereArgs: 用于为whereClause子句传入参数</li>
+</ul>
+</blockquote>
+<h3 id="query"><a href="#query" class="headerlink" title="query"></a>query</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.rawQuery(String sql, String[] selectionArgs);  </div><div class="line">db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy);  </div><div class="line">db.query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit);  </div><div class="line">db.query(String distinct, String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderB</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面几种都是常用的查询方法，第一种最为简单，将所有的SQL语句都组织到一个字符串中，使用占位符代替实际参数，<strong>selectionArgs就是占位符实际参数集</strong>；下面的几种参数都很类似，<strong>columns表示要查询的列所有名称集</strong>，<strong>selection表示WHERE之后的条件语句，可以使用占位符</strong>，<strong>groupBy指定分组的列名</strong>，<strong>having指定分组条件</strong>，配合groupBy使用，<strong>orderBy指定排序的列名</strong>，<strong>limit指定分页参数</strong>，<strong>distinct可以指定“true”或“false”表示要不要过滤重复值</strong>。需要注意的是，selection、groupBy、having、orderBy、limit这几个参数中不包括“WHERE”、“GROUP BY”、“HAVING”、“ORDER BY”、“LIMIT”等SQL关键字。<br><strong>最后，他们同时返回一个Cursor对象，代表数据集的游标，有点类似于JavaSE中的ResultSet。</strong></p>
+</blockquote>
+<h3 id="Cursor"><a href="#Cursor" class="headerlink" title="Cursor"></a>Cursor</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">c.move(<span class="keyword">int</span> offset); <span class="comment">//以当前位置为参考,移动到指定行  </span></div><div class="line">c.moveToFirst();    <span class="comment">//移动到第一行  </span></div><div class="line">c.moveToLast();     <span class="comment">//移动到最后一行  </span></div><div class="line">c.moveToPosition(<span class="keyword">int</span> position); <span class="comment">//移动到指定行  </span></div><div class="line">c.moveToPrevious(); <span class="comment">//移动到前一行  </span></div><div class="line">c.moveToNext();     <span class="comment">//移动到下一行  </span></div><div class="line">c.isFirst();        <span class="comment">//是否指向第一条  </span></div><div class="line">c.isLast();     <span class="comment">//是否指向最后一条  </span></div><div class="line">c.isBeforeFirst();  <span class="comment">//是否指向第一条之前  </span></div><div class="line">c.isAfterLast();    <span class="comment">//是否指向最后一条之后  </span></div><div class="line">c.isNull(<span class="keyword">int</span> columnIndex);  <span class="comment">//指定列是否为空(列基数为0)  </span></div><div class="line">c.isClosed();       <span class="comment">//游标是否已关闭  </span></div><div class="line">c.getCount();       <span class="comment">//总数据项数  </span></div><div class="line">c.getPosition();    <span class="comment">//返回当前游标所指向的行数  </span></div><div class="line">c.getColumnIndex(String columnName);<span class="comment">//返回某列名对应的列索引值  </span></div><div class="line">c.getString(<span class="keyword">int</span> columnIndex);   <span class="comment">//返回当前行指定列的值</span></div></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/SQLite/">#SQLite</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/使用ContentProvider，主要有以下几个理由：/">android四大组件之ContentProvid</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/android面试/">android面试</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android界面/">android界面</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

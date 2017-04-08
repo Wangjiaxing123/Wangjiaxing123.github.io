@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="newtrekWang">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="android四大组件之ContentProvider"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>android四大组件之ContentProvider - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/08/使用ContentProvider，主要有以下几个理由：/">
+                android四大组件之ContentProvider
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-08</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/android四大组件/">android四大组件</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <blockquote>
+<ul>
+<li>内容提供程序<strong>管理对中央数据存储区的访问</strong>。内容提供程序<strong>主要旨在供其他应用使用</strong>，这些应用使用提供程序客户端对象来访问提供程序提供程序与提供程序客户端共同提供一致的标准数据界面，该界面还可处理跨进程通信并保护数据访问的安全性。</li>
+<li>客户端应用进程中的 ContentResolver 对象和拥有提供程序的应用中的 ContentProvider 对象可自动处理跨进程通信。 ContentProvider 还可充当其数据存储区和表格形式的数据外部显示之间的抽象层。</li>
+</ul>
+</blockquote>
+<h3 id="使用ContentProvider，主要有以下几个理由："><a href="#使用ContentProvider，主要有以下几个理由：" class="headerlink" title="使用ContentProvider，主要有以下几个理由："></a>使用ContentProvider，主要有以下几个理由：</h3><blockquote>
+<ul>
+<li>ContentProvider提供了对底层数据存储方式的抽象。底层使用了SQLite数据库，在用了ContentProvider封装后，即使你把数据库换成MongoDB，也不会对上层数据使用层代码产生影响。</li>
+</ul>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1362430-1857f913ab2e7a3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<blockquote>
+<ul>
+<li>Android框架中的一些类需要ContentProvider类型数据。如果你想让你的数据可以使用在如SyncAdapter, Loader, CursorAdapter等类上，那么你就需要为你的数据做一层ContentProvider封装。</li>
+<li>第三个原因也是最主要的原因，是ContentProvider为应用间的数据交互提供了一个安全的环境。它准许你把自己的应用数据根据需求开放给其他应用进行增、删、改、查，而不用担心直接开放数据库权限而带来的安全问题。</li>
+</ul>
+<p><strong>我们客户端需要ContentResolver来对不同的ContentProvider进行操作。</strong></p>
+</blockquote>
+<p>###　ContentResolver</p>
+<blockquote>
+<p>因为一台手机会有包含有Provider的应用，比如联系人应用，日历应用，字典应用等等，就会有许多的Provider，所以android为我们提供了ContentResolver来同意管理与不同ContentProvider间的操作。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1362430-a336044d52818448.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<p>ContentResolver通过URI来区分不同的ContentProvider，ContentProvider中的URI有固定格式</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1362430-b39bc91ec8e272af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<blockquote>
+<ul>
+<li><strong>Authority</strong>:授权信息，用以区别不同的ContentProvider；</li>
+<li><strong>Path</strong>：表名，用以区分ContentProvider中不同的数据表；</li>
+<li><strong>Id</strong>：Id号，用以区别表中的不同数据；</li>
+</ul>
+</blockquote>
+<h3 id="访问提供程序"><a href="#访问提供程序" class="headerlink" title="访问提供程序"></a>访问提供程序</h3><blockquote>
+<p>应用从具有 ContentResolver 客户端对象的内容提供程序访问数据。 此对象具有调用提供程序对象（ContentProvider 的某个具体子类的实例）中同名方法的方法。 ContentResolver 方法可提供持续存储的基本“CRUD”（创建、检索、更新和删除）功能。</p>
+</blockquote>
+<p>例：要从用户字典提供程序中获取字词及其语言区域的列表，则需调用 ContentResolver.query()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Queries the user dictionary and returns results</span></div><div class="line">mCursor = getContentResolver().query(</div><div class="line">    UserDictionary.Words.CONTENT_URI,   <span class="comment">// The content URI of the words table</span></div><div class="line">    mProjection,                        <span class="comment">// The columns to return for each row</span></div><div class="line">    mSelectionClause                    <span class="comment">// Selection criteria</span></div><div class="line">    mSelectionArgs,                     <span class="comment">// Selection criteria</span></div><div class="line">    mSortOrder);                        <span class="comment">// The sort order for the returned rows</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Query()与SQL查询对比</p>
+<ul>
+<li>Url   |  FROM table_name | uri映射至提供程序中名为table_name的表；</li>
+<li>projection  | col,col,col,…   |  projection是应该为检索到的每个行包含的列的数组；</li>
+<li>selection | WHERE col=value  | selection会指定选择行的条件</li>
+<li>selectionArgs   </li>
+<li>sortOrder | ORDER BY col,col….  |  sortOrder指定行在返回的Cursor中的显示顺序。<h3 id="内容URL"><a href="#内容URL" class="headerlink" title="内容URL"></a>内容URL</h3>内容 URI 是用于在提供程序中标识数据的 URI。内容 URI 包括整个提供程序的符号名称（其授权）和一个指向表的名称（路径）。 当您调用客户端方法来访问提供程序中的表时，该表的内容 URI 将是其参数之一。 ContentResolver 对象会分析出 URI 的授权，并通过将该授权与已知提供程序的系统表进行比较，来“解析”提供程序。 然后， ContentResolver 可以将查询参数分派给正确的提供程序。</li>
+</ul>
+</blockquote>
+<p>###从提供程序检索数据</p>
+<blockquote>
+<p><strong>应该在单独线程上异步执行查询</strong></p>
+<ul>
+<li>请求对提供程序的读取访问权限</li>
+<li>定义将查询发送至提供程序的代码</li>
+</ul>
+<p>其实就跟数据库操作一样，具体实例可见<a href="https://github.com/Wangjiaxing123/CustomWidgetDemo/blob/master/app/src/main/java/com/newtrekwang/customwidgetdemo/utils/TestProvider.java" target="_blank" rel="external">https://github.com/Wangjiaxing123/CustomWidgetDemo/blob/master/app/src/main/java/com/newtrekwang/customwidgetdemo/utils/TestProvider.java</a></p>
+</blockquote>
+<p>实验效果<br><img src="" alt=""></p>
+<h3 id="操作系统的ContentProvider"><a href="#操作系统的ContentProvider" class="headerlink" title="操作系统的ContentProvider"></a>操作系统的ContentProvider</h3><blockquote>
+<p>android系统本身提供了大量的ContentProvider，例如联系人信息，系统的多媒体信息等。开发者自己开发的应用也可通过ContentResolver来调用系统ContentProvider提供的query(),insert(),update(),delete()方法，这样开发者就可以通过ContentProvider来获取android内部的数据了。</p>
+<ul>
+<li>获取ContentResolver</li>
+<li>根据需要调用ContentResolver的query(),insert(),update(),delete()方法操作数据。<h4 id="管理联系人"><a href="#管理联系人" class="headerlink" title="管理联系人"></a>管理联系人</h4><strong>ContactsContract.Contacts.CONTENT_URI</strong>:对所有联系人操作<br><strong>ContactsContract.CommonDataKinds.Phone.CONTENT_URI</strong>：对所有电话号码操作<br><strong>ContactsContract.CommonDataKinds.Email.CONTENT_URI</strong>：对所有电子邮件操作</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Map&lt;String,Object&gt;&gt; getData()&#123;</div><div class="line">        List&lt;Map&lt;String,Object&gt;&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        ContentResolver contentResolver=getActivity().getContentResolver();</div><div class="line"><span class="comment">//        查询所有联系人</span></div><div class="line">        Cursor cursor =contentResolver.query(ContactsContract.Contacts.CONTENT_URI,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</div><div class="line">        <span class="keyword">while</span> (cursor.moveToNext())&#123;</div><div class="line">            Map&lt;String,Object&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"><span class="comment">//            id</span></div><div class="line">            String contactId=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));</div><div class="line">            map.put(ContactsContract.Contacts._ID,contactId);</div><div class="line"><span class="comment">//            name</span></div><div class="line">            String name=cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));</div><div class="line">            map.put(ContactsContract.Contacts.DISPLAY_NAME,name);</div><div class="line"></div><div class="line"><span class="comment">//            phones</span></div><div class="line">            List&lt;String&gt; detaile=<span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="comment">//            查询指定联系人的电话号码</span></div><div class="line">            Cursor phones=contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,<span class="keyword">null</span>, ContactsContract.CommonDataKinds.Phone.CONTACT_ID+<span class="string">"="</span>+contactId,<span class="keyword">null</span>,<span class="keyword">null</span>);</div><div class="line">            <span class="keyword">while</span> (phones.moveToNext())&#123;</div><div class="line">               String phoneNumber= phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));</div><div class="line">                detaile.add(phoneNumber);</div><div class="line">            &#125;</div><div class="line">            map.put(<span class="string">"phones"</span>,detaile);</div><div class="line">            phones.close();</div><div class="line"></div><div class="line">            list.add(map);</div><div class="line">        &#125;</div><div class="line">        cursor.close();</div><div class="line">        <span class="keyword">return</span> list;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/contentProvider/">#contentProvider</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/使用ContentProvider，主要有以下几个理由：/">android四大组件之ContentProvid</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/android面试/">android面试</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android界面/">android界面</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
