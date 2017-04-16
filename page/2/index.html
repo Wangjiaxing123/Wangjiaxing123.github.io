@@ -139,6 +139,50 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/03/15/《java核心技术卷一》第五章 继承/">
+                《java核心技术卷一》第五章
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-03-15</span>
+            
+            
+                <a href="http://yoursite.com/2017/03/15/《java核心技术卷一》第五章 继承/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/《java核心技术卷一》/">《java核心技术卷一》</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>#《java核心技术卷一》第五章 继承</p>
+<p>####<strong>1.关键字extends表明正在构造的新类派生于一个已存在的类，已存在的类称为超类，基类或父类；新类称为子类，派生类或孩子类。</strong>  </p>
+<p>####<strong>2.设计类的时候，应该将通用的方法放在超类中，将具有特殊用途的方法放在子类中。</strong>  </p>
+<p>####<strong>3.子类的方法不能直接访问超类的私有域，如果一定要访问，必须借助共有的接口，如果超类接口方法名与子类相同，在方法名前加super.</strong>  </p>
+<p>####<strong>4.在子类中可以增加域，增加方法或覆盖超类的方法，然而绝对不能删除继承的任何域和方法，java中使用关键字super调用超类的方法。</strong>  </p>
+<p>####<strong>5.由于子类的构造器不能访问超类的私有域，所以必须利用超类的构造器对这部分私有域进行初始化，我们可以通过super实现对超类构造器的调用。而使用super调用构造器的语句必须是子类构造器的第一条语句。</strong>  </p>
+<p>####<strong>6.如果子类的构造器没有显示地调地调用超类的构造器，则自动地调用超类默认（没有参数）的构造器，如果超类没有不带参数的构造器，并且在子类的构造器中有没有显示地调用超类的其他构造器，则java编译器将报告错误。</strong>  </p>
+<p>####<strong>7.java不支持多继承</strong>  </p>
+<p>####<strong>8.超类变量可以引用任何一个它的子类对象。</strong>  </p>
+<p>####<strong>9.强制转换只能在继承层次内进行；在将超类转换为子类之前，应该使用instanceof进行检查。</strong>  </p>
+<p>####<strong>10.超类的方法使用abstract，这样就可以完全不需要实这个方法了.为了提高程序的清晰度，包含一个或多个抽象方法的类本身必须被声明为抽象的。</strong><br>例：  &gt;public abstract String getDescription();  </p>
+<p>####<strong>11.受保护访问：</strong>  </p>
+        </div>
+        <a href="/2017/03/15/《java核心技术卷一》第五章 继承/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/03/15/android Splash界面及全屏视频欢迎界面实现/">
                 android Splash界面及全屏视频欢迎界面实现
             </a>
@@ -503,54 +547,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/01/24/ReactNative 体验/">
-                ReactNative初体验
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-01-24</span>
-            
-            
-                <a href="http://yoursite.com/2017/01/24/ReactNative 体验/#disqus_thread" class="comments article-comment-link">Kommentare</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/ReactNative/">ReactNative</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="ReactNative-初体验"><a href="#ReactNative-初体验" class="headerlink" title="ReactNative 初体验"></a>ReactNative 初体验</h1><h2 id="配置（windows）"><a href="#配置（windows）" class="headerlink" title="配置（windows）"></a>配置（windows）</h2><ul>
-<li>参考教程 <a href="https://facebook.github.io/react-native/docs/getting-started.html">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
-<li>我首先是保证了在翻墙的环境安装这些软件的哈 ^-^</li>
-<li><p>因为windows的终端命令行不是很方便,所以先安装chocolatey（<a href="https://chocolatey.org/），看官网好像说他是一个软件管理器。安装很简单，以管理员身份打开powerShell，然后贴如下代码执行">https://chocolatey.org/），看官网好像说他是一个软件管理器。安装很简单，以管理员身份打开powerShell，然后贴如下代码执行</a></p>
-<blockquote>
-<p>iwr <a href="https://chocolatey.org/install.ps1">https://chocolatey.org/install.ps1</a> -UseBasicParsing | iex<br>（安装时可能会出现禁止运行脚本的问题，可以参照这个方法解决。<a href="http://www.cnblogs.com/zhaozhan/archive/2012/06/01/2529384.html）">http://www.cnblogs.com/zhaozhan/archive/2012/06/01/2529384.html）</a></p>
-</blockquote>
-</li>
-<li><p>安装nodejs和python</p>
-<blockquote>
-<p>choco install nodejs.install<br>choco install python2</p>
-</blockquote>
-</li>
-<li><p>nodejs安装完成后，会有npm,它也是个软件包管理器，用它就可以安装react-native了</p>
-<blockquote>
-<p>npm install -g react-native-cli</p>
-        </div>
-        <a href="/2017/01/24/ReactNative 体验/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -593,6 +589,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/16/任务流程/">任务和返回栈</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
             </li>
             
@@ -602,10 +602,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/04/07/android之对话框/">android之对话框</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/04/05/排序/">java实现基础算法</a>
             </li>
             
         </ul>
@@ -619,7 +615,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/android面试/">android面试</a>
+            <a class="footer-post" href="/categories/Git/">Git</a>
         </li>
         
         <li>
@@ -627,7 +623,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/AIDL/">AIDL</a>
         </li>
         
         <li>

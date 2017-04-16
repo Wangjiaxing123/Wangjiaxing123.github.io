@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="生命在于折腾"/>
+        <meta property="og:title" content="任务和返回栈"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Archiv: 2017/4 - 生命在于折腾</title>
+    <title>任务和返回栈 - 生命在于折腾</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -119,9 +119,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -129,257 +127,113 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2017/4</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2016/12/23/about/">
-        <span class="archive-date">
-            Dec 2016
-        </span>
-        Untitled
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/16/任务流程/">
+                任务和返回栈
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-16</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Activity/">Activity</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <blockquote>
+<ul>
+<li>一个 Activity 甚至可以启动设备上其他应用中存在的 Activity。即使这两个 Activity 可能来自不同的应用，但是 Android 仍会将 Activity 保留在相同的任务中，以维护这种无缝的用户体验。</li>
+<li>任务是指在执行特定作业时与用户交互的一系列 Activity。 这些 Activity 按照各自的打开顺序排列在堆栈（即返回栈）中。</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="任务流程"><a href="#任务流程" class="headerlink" title="任务流程"></a>任务流程</h2><blockquote>
+<ul>
+<li>设备主屏幕是大多数任务的起点。当用户触摸应用启动器中的图标（或主屏幕上的快捷方式）时，该应用的任务将出现在前台。 如果应用不存在任务（应用最近未曾使用），则会创建一个新任务，并且该应用的“主”Activity 将作为堆栈中的根 Activity 打开。</li>
+<li>当前 Activity 启动另一个 Activity 时，该新 Activity 会被推送到堆栈顶部，成为焦点所在。前一个 Activity 仍保留在堆栈中，但是处于停止状态。Activity 停止时，系统会保持其用户界面的当前状态。 用户按“返回”按钮时，当前 Activity 会从堆栈顶部弹出（Activity 被销毁），而前一个 Activity 恢复执行（恢复其 UI 的前一状态）。 </li>
+</ul>
+</blockquote>
+<h5 id="图表示"><a href="#图表示" class="headerlink" title="图表示"></a>图表示</h5><p><img src="https://developer.android.google.cn/images/fundamentals/diagram_backstack.png" alt=""></p>
+<h3 id="定义启动模式"><a href="#定义启动模式" class="headerlink" title="定义启动模式"></a>定义启动模式</h3><blockquote>
+<ul>
+<li>使用清单文件</li>
+</ul>
+</blockquote>
+<pre><code>在清单文件中声明 Activity 时，您可以使用 &lt;activity&gt; 元素的 launchMode 属性指定 Activity 应该如何与任务关联。
+启动模式共有四种：
+standard(默认模式):
+默系统在启动 Activity 的任务中创建 Activity 的新实例并向其传送 Intent。Activity 可以多次实例化，而每个实例均可属于不同的任务，并且一个任务可以拥有多个实例。
+singleTop:
+如果当前任务的顶部已存在 Activity 的一个实例，则系统会通过调用该实例的 onNewIntent() 方法向其传送 Intent，而不是创建 Activity 的新实例。例如，假设任务的返回栈包含根 Activity A 以及 Activity B、C 和位于顶部的 D（堆栈是 A-B-C-D；D 位于顶部）。收到针对 D 类 Activity 的 Intent。如果 D 具有默认的 &quot;standard&quot; 启动模式，则会启动该类的新实例，且堆栈会变成 A-B-C-D-D。但是，如果 D 的启动模式是 &quot;singleTop&quot;，则 D 的现有实例会通过 onNewIntent() 接收 Intent，因为它位于堆栈的顶部；而堆栈仍为 A-B-C-D。但是，如果收到针对 B 类 Activity 的 Intent，则会向堆栈添加 B 的新实例，即便其启动模式为 &quot;singleTop&quot; 也是如此。
+singleTask:
+系统创建新任务并实例化位于新任务底部的 Activity。但是，如果该 Activity 的一个实例已存在于一个单独的任务中，则系统会通过调用现有实例的 onNewIntent() 方法向其传送 Intent，而不是创建新实例。一次只能存在 Activity 的一个实例。
+singleInstance
+如果任务中没有此activity，会实例化一个activity,系统会创建一个新任务，且此任务有且仅有此activity；如果有此activity，则直接调用onNewintent;该 Activity 始终是其任务唯一仅有的成员
+注：
+无论 Activity 是在新任务中启动，还是在与启动 Activity 相同的任务中启动，用户按“返回”按钮始终会转到前一个 Activity。 但是，如果启动指定 singleTask 启动模式的 Activity，则当某后台任务中存在该 Activity 的实例时，整个任务都会转移到前台。此时，返回栈包括上移到堆栈顶部的任务中的所有 Activity。 图 4 显示了这种情况。
+</code></pre><blockquote>
+<ul>
+<li>使用 Intent 标志</li>
+</ul>
+</blockquote>
+<pre><code>调用 startActivity() 时，可以在 Intent 中加入一个标志，用于声明新 Activity 如何（或是否）与当前任务关联。
+</code></pre><p><strong>注:</strong>某些适用于清单文件的启动模式不可用作 Intent 标志，同样，某些可用作 Intent 标志的启动模式无法在清单文件中定义。</p>
+<pre><code>FLAG_ACTIVITY_NEW_TASK
+</code></pre><blockquote>
+<p>在新任务中启动 Activity。如果已为正在启动的 Activity 运行任务，则该任务会转到前台并恢复其最后状态，同时 Activity 会在 onNewIntent() 中收到新 Intent。</p>
+</blockquote>
+<pre><code>FLAG_ACTIVITY_SINGLE_TOP
+</code></pre><blockquote>
+<p>如果正在启动的 Activity 是当前 Activity（位于返回栈的顶部），则 现有实例会接收对 onNewIntent() 的调用，而不是创建 Activity 的新实例。<br>正如前文所述，这会产生与 “singleTop”launchMode 值相同的行为。</p>
+</blockquote>
+<pre><code>FLAG_ACTIVITY_CLEAR_TOP
+</code></pre><blockquote>
+<p>如果正在启动的 Activity 已在当前任务中运行，则会销毁当前任务顶部的所有 Activity，并通过 onNewIntent() 将此 Intent 传递给 Activity 已恢复的实例（现在位于顶部），而不是启动该 Activity 的新实例。产生这种行为的 launchMode 属性没有值。</p>
+</blockquote>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/01/24/ReactNative 体验/">
-        <span class="archive-date">
-            Jan 2017
-        </span>
-        ReactNative初体验
-    </a>
+
+
+
+    </div>
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2017/04/07/android之对话框/">
-        <span class="archive-date">
-            Apr 2017
-        </span>
-        android之对话框
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/25/android IPC机制实现方式之AIDL/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        android IPC机制实现方式之AIDL
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/04/08/android之SQLite笔记/">
-        <span class="archive-date">
-            Apr 2017
-        </span>
-        android之SQLite笔记
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/15/android Splash界面及全屏视频欢迎界面实现/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        android Splash界面及全屏视频欢迎界面实现
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/25/android四大组件之Service/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        android四大组件之Service
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2016/12/22/hello-world/">
-        <span class="archive-date">
-            Dec 2016
-        </span>
-        Hello World
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/01/android面试题day1/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        android面试一天一题 day1
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/20/git学习笔记/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        git学习笔记
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/08/rxjava 使用总结（基本篇）/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        rxjava 使用总结（基本篇）
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/01/java 设计模式之单例模式/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        java 设计模式之单例模式
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/08/rxjava 应用扩展/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        rxjava 应用扩展
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/02/java 设计模式之Builder模式/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        java 设计模式之Builder模式
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/04/16/任务流程/">
-        <span class="archive-date">
-            Apr 2017
-        </span>
-        任务和返回栈
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/02/28/java 设计模式之策略模式/">
-        <span class="archive-date">
-            Feb 2017
-        </span>
-        java 设计模式之策略模式
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/15/《java核心技术卷一》第五章 继承/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        《java核心技术卷一》第五章
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/04/《android 源码设计模式》笔记之代理模式/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        Untitled
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2016/12/23/使用 Cmd Markdown/">
-        <span class="archive-date">
-            Dec 2016
-        </span>
-        Hello 2017
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/04/05/排序/">
-        <span class="archive-date">
-            Apr 2017
-        </span>
-        java实现基础算法
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/04/08/使用ContentProvider，主要有以下几个理由：/">
-        <span class="archive-date">
-            Apr 2017
-        </span>
-        android四大组件之ContentProvider
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/01/07/自定义Dialog样式/">
-        <span class="archive-date">
-            Jan 2017
-        </span>
-        自定义Dialog样式
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/03/《android 源码设计模式》笔记之原型模式/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        java 设计模式之原型模式
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/15/《java核心技术卷一》第三章 java的基本程序设计结构/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        《java核心技术卷一》第三章
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/03/15/《java核心技术卷一》第四章 对象与类/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        《java核心技术卷一》第四章
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/01/12/自定义View（一）/">
-        <span class="archive-date">
-            Jan 2017
-        </span>
-        自定义View
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2017/01/17/通用格式/">
-        <span class="archive-date">
-            Jan 2017
-        </span>
-        android adb常用命令
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
 
@@ -521,7 +375,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
