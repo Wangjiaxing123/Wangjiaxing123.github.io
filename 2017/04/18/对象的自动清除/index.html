@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="newtrekWang">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Java程序设计笔记"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Java程序设计笔记 - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/18/对象的自动清除/">
+                Java程序设计笔记
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-18</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/java/">java</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h1 id="对象的自动清除"><a href="#对象的自动清除" class="headerlink" title="对象的自动清除"></a>对象的自动清除</h1><blockquote>
+<ul>
+<li>对象回收是有垃圾回收线程负责</li>
+<li>System.gc()方法可以要求系统进行垃圾回收，仅仅是建议系统</li>
+<li>java没有“析构方法”，但Object的finalize()有类似方法<ul>
+<li>系统在回收时会自动调用对象的finalize()方法</li>
+<li>protected void finalize() throws Throwable{}</li>
+<li>子类的finalize方法可以在里面释放系统资源，一般来说，子类的finalize方法中应该调用父类的finalize方法。<a id="more"></a>
+<h1 id="内部类与匿名类"><a href="#内部类与匿名类" class="headerlink" title="内部类与匿名类"></a>内部类与匿名类</h1><h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2></li>
+</ul>
+</li>
+<li>定义在一个类的内部</li>
+<li>使用分为内部使用和外部使用</li>
+<li>内部类总可以直接访问外部类的字段及放啊</li>
+<li>内部类总访问外部类的字段可以用“外部类名.this.字段”的方式</li>
+<li>用static修饰内部类，表明该内部类实际是一种外部类<ul>
+<li>因为它与外部类的实例无关</li>
+<li>有人认为static的类是嵌套类，不是内部类</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170417194027.jpg" alt=""></p>
+<h2 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h2><blockquote>
+<ul>
+<li>它没有类名，在定义类的同时就生成该对象的一个实例,不取名字，直接用父类或接口的名字</li>
+<li>一次性使用的类</li>
+</ul>
+</blockquote>
+<p>例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Handler()&#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="局部类"><a href="#局部类" class="headerlink" title="局部类"></a>局部类</h2><blockquote>
+<ul>
+<li>同局部变量一样，方法中的内部类<ul>
+<li>不能用public,private,protected,static修饰</li>
+<li>但可以被final，abstract修饰</li>
+</ul>
+</li>
+<li>可以访问器外部类的成员</li>
+<li>不能苟访问该方法的局部变量，除非是final局部变量。</li>
+</ul>
+</blockquote>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><blockquote>
+<ul>
+<li>基本写法<ul>
+<li>（参数）-&gt; 结果</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(String s) -&gt; s.lenth();</div><div class="line">x -&gt; x*x;</div><div class="line">() -&gt; &#123;System.out.println(<span class="string">"aaa"</span>)&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>大体上相当于其它语言的”匿名函数”或”函数指针”</li>
+<li>在java中它实际上是“匿名类的一个实例”</li>
+</ul>
+</blockquote>
+<h2 id="装箱"><a href="#装箱" class="headerlink" title="装箱"></a>装箱</h2><h4 id="基本类型的包装类"><a href="#基本类型的包装类" class="headerlink" title="基本类型的包装类"></a>基本类型的包装类</h4><blockquote>
+<ul>
+<li>它将基本类型包装成Object</li>
+<li>integer i = new Integer(10);<h4 id="装箱-1"><a href="#装箱-1" class="headerlink" title="装箱"></a>装箱</h4>Integer i=10;<br>实际为：Integer i=Integer.valueOf(10);</li>
+</ul>
+</blockquote>
+<h4 id="拆箱"><a href="#拆箱" class="headerlink" title="拆箱"></a>拆箱</h4><blockquote>
+<p> int a=i;<br> 实际为：a=i.intValue();</p>
+<h4 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h4><p>可以在enum定义体中，添加字段，方法，构造方法</p>
+</blockquote>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><blockquote>
+<p>又称为注记，标记，标记，注释<br>是在各种语法要素上加上附加信息，以供编译器或其他程序使用</p>
+<ul>
+<li>常用注解：<ul>
+<li>@Override 表示覆盖父类的方法</li>
+<li>@Deprecated 表示过时的方法</li>
+<li>@SuppressWarnings 标识让编译器不产生警告<br><img src="http://ojgs96t5i.bkt.clouddn.com/QQenum20170418195951.jpg" alt=""></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>###引用与指针<br>引用实质就是指针<br>但是它是受控的，安全的<br>比如：</p>
+<ul>
+<li>会检查空指引</li>
+<li>没有指针运算</li>
+<li>不能访问没有引用到的内存</li>
+<li>自动回收垃圾<br>（1） 指针》引用类型，引用本身就相当于指针<pre><code>- 可以用来修改对象的属性，调用对象的方法
+</code></pre>   基本类型：没有对应的引用类型<br>（2）指针运算》数组<br>（3）函数指针》接口，lambda表达式<br>（4）指向结点的指针》对象的引用<br>（5）使用那个JNI<pre><code>- java Native interface
+- 它允许java代码和其他语言写的代码进行交互
+</code></pre><h3 id="基本类型的相等"><a href="#基本类型的相等" class="headerlink" title="基本类型的相等"></a>基本类型的相等</h3></li>
+<li>基本类型：<ul>
+<li>数值类型：转换后比较</li>
+<li>浮点数，最好不直接用==</li>
+<li>Double.NAN==Double.NAN结果为false</li>
+<li>boolean型无法与int比较<br><strong>注</strong> valueOf() -128到127会有缓存，超过的话就没有缓存了</li>
+</ul>
+</li>
+<li>枚举类型<ul>
+<li>内部进行了唯一实例化，可以直接判断</li>
+</ul>
+</li>
+<li>引用对象<ul>
+<li>是直接看两个引用是否一样</li>
+<li>如果要判断内容是否一样，则要重写equals方法</li>
+<li>如果重写equals方法，则最好重写hashCode方法<br><img src="http://ojgs96t5i.bkt.clouddn.com/QQ对象相等20170418201714.jpg" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="String对象的特殊性"><a href="#String对象的特殊性" class="headerlink" title="String对象的特殊性"></a>String对象的特殊性</h3><p>String对象</p>
+<ul>
+<li>判断对象，一定不要用==，要用equals</li>
+<li>但是字符串变量及字符串常量会进行内部化，相同的字符串常量是==的</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQStirngequals20170418202758.jpg" alt=""></p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ul>
+<li>异常又称为例外，差错</li>
+<li>对应着java运行错误处理机制</li>
+<li><p>基本写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">	语句组</div><div class="line">&#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">	异常处理语句组；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>java中处理异常</p>
+<ul>
+<li>抛出异常</li>
+<li>运行时系统在调用栈中查找：从生成异常的方法开始进行回溯，直到找到</li>
+<li>捕获异常的代码</li>
+</ul>
+</li>
+</ul>
+<h4 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a>异常的分类</h4><p>Throwable</p>
+<ul>
+<li>Error:JVM错误</li>
+<li>Exception</li>
+</ul>
+<p>多异常的处理</p>
+<ul>
+<li>子类异常要排在父类异常的前面<br>finally语句<ul>
+<li>无论有无异常，都会执行处理语句</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><strong>进程</strong>：一个程序的运行<br><strong>线程</strong>:程序中单个顺序的流控制称为线程<br>一个进程中可以含有多个线程<br>一个进程中的多个线程</p>
+<ul>
+<li>分享CPU（并发的或以时间片的方式）</li>
+<li>共享内存 </li>
+<li>线程体  — run()方法来实现的</li>
+<li>线程启动后，系统就自动调用run（）方法</li>
+<li>使用<ul>
+<li>通过继承Thread类</li>
+<li>通过向Thread()构造方法传递Runnable对象</li>
+<li>可用匿名类实现Runnable或用lambda表达式</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/18/概论/">数据结构与算法笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/18/对象的自动清除/">Java程序设计笔记</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/16/任务流程/">任务和返回栈</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/数据结构与算法/">数据结构与算法</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android界面/">android界面</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

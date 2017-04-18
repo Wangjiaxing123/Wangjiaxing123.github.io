@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="《java核心技术卷一》第三章"/>
+        <meta property="og:title" content="数据结构与算法笔记"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>《java核心技术卷一》第三章 - 生命在于折腾</title>
+    <title>数据结构与算法笔记 - 生命在于折腾</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -136,20 +136,20 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2017/03/15/《java核心技术卷一》第三章 java的基本程序设计结构/">
-                《java核心技术卷一》第三章
+            <a href="/2017/04/18/概论/">
+                数据结构与算法笔记
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2017-03-15</span>
+                <span class="date">2017-04-18</span>
             
             
                 <a href="#disqus_thread" class="comments">Kommentare</a>
             
             
                 <span class="category">
-                    <a href="/categories/《java核心技术卷一》/">《java核心技术卷一》</a>
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
                 </span>
             
         </div>
@@ -161,164 +161,83 @@
         
 
         <!-- Post Content -->
-        <p>#《java核心技术卷一》第三章 java的基本程序设计结构</p>
-<p>##<strong>注释</strong><br>1.使用//<br>2.长篇注释用/<em>和<strong>/<br>3.用来自动生成文档，以/</strong>开始，以</em>/结束</p>
-<p>##<strong>数据类型</strong><br>java是一种强类型语言，意味着必须为每一个变量声明一种类型，一共有8种基本类型<br><img src="http://ojgs96t5i.bkt.clouddn.com/java基本数据结构.png" alt="image">  </p>
-<p>###<strong>整型</strong>   </p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>大小</th>
-<th>数值范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>4字节</td>
-<td>-2147483648-2147483647</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2字节</td>
-<td>-323768-32767</td>
-</tr>
-<tr>
-<td>long</td>
-<td>8字节</td>
-<td>-92233720368547758008-9223372036854775807</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>1字节</td>
-<td>-128-127</td>
-</tr>
-</tbody>
-</table>
-<p>java7开始，加上前缀0b就可以写二进制数比如9为0b1001;另外可以为数字字面量加下划线，例用1_000_000（或0b1111_0100_0010_0100_0000）表示一百万  </p>
-<p>###<strong>浮点类型</strong>   </p>
-<a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>大小</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>float</td>
-<td>4字节</td>
-<td>有效位6~7位</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8字节</td>
-<td>有效位为15位</td>
-</tr>
-</tbody>
-</table>
-<p>float类型的数值有一个后缀F,没有后缀F的浮点数值默认为double类型，当然也可以在后面添加后缀D</p>
-<p>浮点数值计算遵循IEEE754规范，表示溢出或出错情况的三个特殊的浮点数值：<br>1.正无穷大<br>2.负无穷大<br>3.NaN(不是一个数字)（用Double&gt;isNaN（x）检测一个特定值是否等于Double&gt;NaN）  </p>
-<p>###<strong>char类型</strong><br>Unicode编码单元可以表示为十六进制值，范围从\u0000到\Uffff  </p>
-<p>弄清char类型，就必须了解Unicode编码表。在Unicode出现之前，已经有许多不同的标准：美国的ASC||,西欧语言的ISO8859-1，俄国的KOI-8，中国的GB 18030和BIG-5等  </p>
-<p><strong>代码点</strong>：指与一个编码表中的某个字符对应的代码值<br><strong>代码单元</strong>：每个字符用16位表示，通常被称为代码单元<br>在java中，char类型用UTF-16编码描述一个代码单元  </p>
-<p>###<strong>boolean类型</strong><br>false和true。整型值和布尔值之间不能进行相互转换。</p>
-<p>##<strong>变量</strong>  </p>
-<p>##<strong>常量</strong><br>利用关键字final表示常量，只能被赋值一次，习惯常量名全部大写  </p>
-<p>##<strong>运算符</strong>  </p>
-<pre><code class="~">
-###**数学函数与常量**  
-Math类中，包含了各种各样的数学函数，还提供两个用于表示π和e常量的近似值：  
-Math.PI  
-Math.E  
-###**数值类型之间的转换**  
-![image](http://ojgs96t5i.bkt.clouddn.com/数据类型转换.png)  
-图中有6个实心箭头，表示无信息丢失的转换；有3个虚箭头，表示可能有精度损失的转换。  
-&gt;int n=12345678;     
-&gt;float f=n;//f is 1.23456792E8     
-
-使用上面两个数值进行二元操作时，先要将两个操作数转换为同一种类型，然后再计算。  
-*  如果两个操作数中有一个是double类型，另一个操作数就会转换为double类型。  
-*  否则，如果其中一个操作数是float类型，另一个操作数将会转换为float类型。  
-*  否则，如果其中一个操作数是long类型，另一个操作数将会转换为long类型。   
-*  否则，两个操作数都将被转换为int类型。   
-###**强制类型转换**  
-这种转换可能会丢失一些信息   
-例  
-&gt;double x=9,997;  
-int nx=(int)x;  
-
-这样，变量nx的值为9，强制类型转换通过小数部分将浮点值转换为整型。如果想对浮点数进行舍入运算，那就需要使用Math.round方法。 
-&gt;double x=9.997;  
-int nx=(int)Math.round(x);  
-
-现在，变量nx的值为10，注意，round方法返回的结果为long类型，所以还需要使用（int）  
-###**枚举类型**  
-有时候，变量的取值只在一个有限的集合内。例如：服装
-尺寸可用S,M,L,X表示。为了防止变量保存错误的值，可以自定义枚举类型。枚举类型包括有限个命名的值。例如：   
-&gt;enum Size {SMALL,MEDIUM,LARGE,EXTRA_LARGE};   
-&gt;Size s=Size.SMALL;  
-
-Size类型的变量智能存贮这个类型声明中给定的某个枚举值，或者null值。  
-###**字符串**  
-标准java类库中提供了一个预定义类，很自然地叫做String，每个用双引号括起来的字符串都是String的一个实例。  
-####**子串**  
-String类的substring方法可提取一个字串，***从第一个位置计数，直到最后个位置参数，但不包括最后一个位置对应的字符。***  
-####**拼接**  
-允许使用+符号连接两个字符串。  
-####**不可变字符串**  
-String类没有提供用于修改字符串的方法，但可以用拼接方法实现。  
-####**检测字符串是否相等**  
-使用equals方法检测两个字符串是否相等。检测是否相等而不区分大小写使用equalsIgnoreCase方法**一定不能使用==运算符检测两个字符串是否相等，这个运算符只能够确定两个字符串是否放置在同一个位置上。如果字符串放置在同一个位置上，他们必然相等，但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上**  
-####**空串与null串**  
-空串&quot;&quot;是长度为0的字符串。可以调用  
-if(str.length()==0)或if(str.equals(&quot;&quot;))。String变量还可以存放一个特殊的值，名为null,表示目前没有任何对象与该变量关联，可用if（str==null）检测  
-####**构建字符串**  
-如果使用许多小段的字符串构建一个字符串，那么可以用字符串构建器。例：  
-&gt;StringBuilder builder=new StringBuilder();   
-builder.append(ch);//追加一个字符  
-builder.append(str);//追加一字符串  
-String comleteString=builder.toString();  
-
-###**输入输出**
-</code></pre>
-<p>###<strong>控制流程</strong>  </p>
-<p>####<strong>块作用域</strong>  </p>
-<p>####<strong>条件语句</strong>  </p>
-<p>####<strong>循环</strong>  </p>
-<p>####<strong>确定循环:for</strong>  </p>
-<p>####<strong>多重选择：switch</strong>  </p>
-<p>####<strong>中断控制流程语句</strong>  </p>
-<p>###<strong>大数值</strong>  </p>
-<p>###<strong>数组</strong>  </p>
-<blockquote>
-<p>int[] a=new int[100];  </p>
+        <p>#概论</p>
+<h2 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h2><blockquote>
+<ul>
+<li>问题抽象》数据抽象》算法抽象》 数据结构+算法，进行程序设计<a id="more"></a>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2></li>
+<li>算法特性<ul>
+<li>通用性<ul>
+<li>对参数化输入进行问题求解</li>
+<li>保证计算结果的正确性</li>
+<li>有效性</li>
+<li>算法是有限条指令组成的指令序列</li>
+<li>优一系列具体步骤组成</li>
+<li>确定性</li>
+<li>算法描述中的下一步应执行的步骤必须明确</li>
+</ul>
+</li>
+<li>有穷性</li>
+</ul>
+</li>
+<li>基本算法分类<ul>
+<li>穷举法<ul>
+<li>顺序找K值</li>
+</ul>
+</li>
+<li>回溯，搜索<ul>
+<li>8皇后，树和图遍历</li>
+</ul>
+</li>
+<li>递归分治<ul>
+<li>二分找K值，快速排序，归并排序</li>
+</ul>
+</li>
+<li>贪心法<ul>
+<li>huffman编码树，最短路Dijkstra算法，最小生成树Prim算法</li>
+</ul>
+</li>
+<li>动态规划<br> -最短路Floyd算法</li>
+</ul>
+</li>
+</ul>
 </blockquote>
-<p>####<strong>for each循环</strong>    </p>
-<blockquote>
-<p>for(pariable:collection) statement  //循环collection中的每一个元素    </p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><pre><code>**结构**：实体+结构
+</code></pre><blockquote>
+<ul>
+<li>数据机构：<br> -按照逻辑关系组织起来的一批数据<ul>
+<li>按一定的存储方法把它存储在计算机中</li>
+<li>在这些数据上定义了一个运算的集合</li>
+</ul>
+</li>
+</ul>
 </blockquote>
-<p>####<strong>数组初始化以及匿名数组</strong>  </p>
-<blockquote>
-<p>int[] a={1,2,3,4,5};<br>new int[]{1,2,3,4,5};      </p>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170418132834.jpg" alt=""></p>
+<h4 id="数据结构的逻辑组织"><a href="#数据结构的逻辑组织" class="headerlink" title="数据结构的逻辑组织"></a>数据结构的逻辑组织</h4><blockquote>
+<ul>
+<li>线性结构<ul>
+<li>线性表（表，栈，队列，串等）</li>
+</ul>
+</li>
+<li>非线性结构<ul>
+<li>树（二叉树，huffman树，二叉检索树等）</li>
+<li>图（有向图，无向图）<ul>
+<li>图》树》二叉树》线性表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </blockquote>
-<p>####<strong>数组拷贝</strong><br>允许将一个数组变量拷贝给另一个数组变量，这时，两个变量将引用同一个数组。  </p>
-<p>####<strong>数组排序</strong><br>可用Arrays类中的sort方法：使用了优化的快速排序算法。  </p>
-<p>####<strong>多维数组</strong>  </p>
-<p>####<strong>不规则数组</strong></p>
+<h4 id="数据的存储结构"><a href="#数据的存储结构" class="headerlink" title="数据的存储结构"></a>数据的存储结构</h4><pre><code>逻辑结构到物理存储空间的映射
+</code></pre><blockquote>
+</blockquote>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170418133438.jpg" alt=""></p>
 
     </div>
 
     
 
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/java/">#java</a>
-        </div>
     
 
     <!-- Comments -->
