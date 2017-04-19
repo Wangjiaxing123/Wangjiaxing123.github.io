@@ -293,12 +293,86 @@
 <p>多异常的处理</p>
 <ul>
 <li>子类异常要排在父类异常的前面<br>finally语句<ul>
-<li>无论有无异常，都会执行处理语句</li>
+<li>无论有无异常，都会执行处理语句<h3 id="受检的异常"><a href="#受检的异常" class="headerlink" title="受检的异常"></a>受检的异常</h3><strong>Exception</strong>分两种</li>
+<li>RuntimeException及其子类，可以不明确处理</li>
+<li>否则，称为受检的异常<br><strong>受检的异常，要求明确进行语法处理</strong></li>
+<li>要么捕获</li>
+<li>要么抛出异常</li>
 </ul>
 </li>
 </ul>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><strong>进程</strong>：一个程序的运行<br><strong>线程</strong>:程序中单个顺序的流控制称为线程<br>一个进程中可以含有多个线程<br>一个进程中的多个线程</p>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p><strong>创建用户自定义异常类</strong></p>
 <ul>
+<li>继承自Exception类或某个子Exception类</li>
+<li>定义属性和方法，或重载父类的方法</li>
+</ul>
+<p>对于异常，不仅要进行捕获处理，有时候还需要将异常进一步传给调用者，一变让调用者也能感受到这种异常，这是可以在catch语句块或finally语句块中采取以下三种方式：</p>
+<ul>
+<li>将当前捕获的异常再次抛出</li>
+<li>重新生成一个异常，并抛出</li>
+<li>重新生成一个新异常，该异常中包含了当前异常的信息，如<br>  throw  new Exception (“some message “,e)</li>
+</ul>
+<h3 id="断言及程序的调试"><a href="#断言及程序的调试" class="headerlink" title="断言及程序的调试"></a>断言及程序的调试</h3><h4 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h4><ul>
+<li>assert 表达式</li>
+<li>assert 表达式，信息</li>
+<li>在调试程序时</li>
+<li>如果表达式不为true,则程序会产生异常，并输出相关的错误信息</li>
+</ul>
+<p>例<br>        assert hypotenuse(3,4)==5:”算法不正确”；</p>
+<p><strong>它起到对程序的检测作用</strong><br>编译及运行</p>
+<ul>
+<li>只有在JDK1.4及以上的版本才可以使用断言</li>
+<li>在运行时，要使assert起作用，则在运行时，使用选项（-ea ,即-enableassetions）</li>
+<li>如 java -ea - classpath.Assertion</li>
+</ul>
+<p>###程序的测试及Junit</p>
+<ul>
+<li>在编写程序代码的同时，还编写测试代码来判断这些程序是否正确</li>
+<li>这个过程称为“测试驱动”的开发过程</li>
+<li>在java的测试过程，经常使用Junit框架</li>
+<li>在Eclipse中<pre><code>- 右键新建new JunitTestCase
+</code></pre></li>
+</ul>
+<h3 id="测试函数"><a href="#测试函数" class="headerlink" title="测试函数"></a>测试函数</h3><ul>
+<li>@Test来标注测试函数<ul>
+<li>fail(info) :表示信息出错</li>
+<li>assertEqauls(arg1,arg2):表示程序要保证两个参数相等</li>
+<li>assertNull(arg):表示参数要为null</li>
+</ul>
+</li>
+</ul>
+<h2 id="程序的调试"><a href="#程序的调试" class="headerlink" title="程序的调试"></a>程序的调试</h2><h4 id="程序的错误"><a href="#程序的错误" class="headerlink" title="程序的错误"></a>程序的错误</h4><ul>
+<li>语法错误（Syntax error）：编辑，编译器发现</li>
+<li>运行错误（Runtime error）：异常处理机制</li>
+<li>逻辑错误（Logic error）：调式（debug），单元测试（unit test）<h3 id="程序的调试-1"><a href="#程序的调试-1" class="headerlink" title="程序的调试"></a>程序的调试</h3></li>
+<li>在IDE中，项目中点右键，debug as</li>
+<li>进入到调试视图（debug perspective）<h4 id="调试的手段"><a href="#调试的手段" class="headerlink" title="调试的手段"></a>调试的手段</h4></li>
+<li>断点（breakpoint）</li>
+<li>跟踪（trace）</li>
+<li>监视（watch）<blockquote>
+<p>在很有可能有错误的地方设置断点，然后跟踪</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Java基础类库"><a href="#Java基础类库" class="headerlink" title="Java基础类库"></a>Java基础类库</h3><ul>
+<li>java.lang core</li>
+<li>java.util</li>
+<li>java.io</li>
+<li>java.awt</li>
+<li>-java.net</li>
+<li>java.sql<h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4></li>
+<li>Object类是所有类的直接或间接父类</li>
+<li>让所有的类有了一致性</li>
+<li>equals()<ul>
+<li>==是引用相等，equals是内容相等</li>
+<li>如果覆盖equals方法，一般也要覆盖hashcode方法</li>
+</ul>
+</li>
+<li>getClass()方法是final方法，它返回一个对象在运行时所对应的标识</li>
+<li>toString返回对象的字符串表示</li>
+<li>finalize用于在垃圾收集前清除对象</li>
+<li>notify(),notifyAll(),wait()线程相关<h4 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h4></li>
+<li>System.getProperty(String name)获取特定的系统属性值<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><strong>进程</strong>：一个程序的运行<br><strong>线程</strong>:程序中单个顺序的流控制称为线程<br>一个进程中可以含有多个线程<br>一个进程中的多个线程</li>
 <li>分享CPU（并发的或以时间片的方式）</li>
 <li>共享内存 </li>
 <li>线程体  — run()方法来实现的</li>
@@ -382,19 +456,19 @@
     <ul>
         
         <li>
+            <a class="footer-post" href="/categories/Git/">Git</a>
+        </li>
+        
+        <li>
             <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/数据结构与算法/">数据结构与算法</a>
-        </li>
-        
-        <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
-        </li>
-        
-        <li>
             <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
     </ul>
