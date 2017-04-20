@@ -139,6 +139,49 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/03/20/git学习笔记/">
+                git学习笔记
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-03-20</span>
+            
+            
+                <a href="http://yoursite.com/2017/03/20/git学习笔记/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Git/">Git</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="git学习笔记"><a href="#git学习笔记" class="headerlink" title="git学习笔记"></a>git学习笔记</h2><h3 id="集中式和分布式版本控制系统有什么区别呢？"><a href="#集中式和分布式版本控制系统有什么区别呢？" class="headerlink" title="集中式和分布式版本控制系统有什么区别呢？"></a>集中式和分布式版本控制系统有什么区别呢？</h3><blockquote>
+<p><strong><em>集中式版本控制系统</em></strong> 版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/001384860735706fd4c70aa2ce24b45a8ade85109b0222b000/0" alt=""></p>
+<blockquote>
+<p>集中式版本控制系统最大的毛病就是必须联网才能工作，如果在局域网内还好，带宽够大，速度够快，可如果在互联网上，遇到网速慢的话，可能提交一个10M的文件就需要5分钟，这还不得把人给憋死啊。</p>
+<p><strong><em>分布式版本控制系统</em></strong>根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了</p>
+</blockquote>
+<p><img src="http://www.liaoxuefeng.com/files/attachments/0013848607465969378d7e6d5e6452d8161cf472f835523000/0" alt=""></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote>
+<p><strong><em>在Windows上安装Git</em></strong><br>Windows下要使用很多Linux/Unix的工具时，需要Cygwin这样的模拟环境，Git也一样。Cygwin的安装和配置都比较复杂，就不建议你折腾了。不过，有高人已经把模拟环境和Git都打包好了，名叫msysgit，只需要下载一个单独的exe安装程序，其他什么也不用装，绝对好用.msysgit是Windows版的Git，从<a href="https://git-for-windows.github.io下载">https://git-for-windows.github.io下载</a><br>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。<br>
+        </div>
+        <a href="/2017/03/20/git学习笔记/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/03/15/《java核心技术卷一》第四章 对象与类/">
                 《java核心技术卷一》第四章
             </a>
@@ -526,50 +569,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/03/01/java 设计模式之单例模式/">
-                java 设计模式之单例模式
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-03-01</span>
-            
-            
-                <a href="http://yoursite.com/2017/03/01/java 设计模式之单例模式/#disqus_thread" class="comments article-comment-link">Kommentare</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/设计模式/">设计模式</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="java-设计模式之单例模式"><a href="#java-设计模式之单例模式" class="headerlink" title="java 设计模式之单例模式"></a>java 设计模式之单例模式</h1><blockquote>
-<p>单例模式是应用最广的模式之一，单例对象的类必须保证只有一个实例存在。如在一个应用中，应该只有一个ImageLoader实例，这个ImageLoader中又含有线程池，缓存系统，网络请求等，很消耗资源，因此，没有理由让它构造多个实例。<br><strong>定义：</strong>确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。<br><strong>角色：</strong></p>
-<ul>
-<li>Client 高层客户端</li>
-<li>Singleton 单例类</li>
-</ul>
-<p>实现单例模式关键点：</p>
-<ul>
-<li>构造函数不对外开放，一般为private；</li>
-<li>通过一个静态方法或者枚举返回单例类对象；</li>
-<li>确保单例类的对象有且只有一个，尤其是在多线程环境下；</li>
-<li>确保单例类对象在反序列化时不会重新构建对象；
-        </div>
-        <a href="/2017/03/01/java 设计模式之单例模式/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -612,6 +611,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/20/JetBrains C++ IDE CLion配置/">Clion 安装</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/18/概论/">数据结构与算法笔记</a>
             </li>
             
@@ -621,10 +624,6 @@
             
             <li>
                 <a class="footer-post" href="/2017/04/16/任务流程/">任务和返回栈</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/04/08/android之SQLite笔记/">android之SQLite笔记</a>
             </li>
             
         </ul>
@@ -638,19 +637,19 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/android界面/">android界面</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/ReactNative/">ReactNative</a>
+            <a class="footer-post" href="/categories/c/">c++</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+            <a class="footer-post" href="/categories/算法/">算法</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
+            <a class="footer-post" href="/categories/AIDL/">AIDL</a>
         </li>
         
     </ul>
