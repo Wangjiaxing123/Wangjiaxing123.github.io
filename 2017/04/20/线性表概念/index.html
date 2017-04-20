@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="生命在于折腾"/>
+        <meta property="og:title" content="线性表"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>面试 - 生命在于折腾</title>
+    <title>线性表 - 生命在于折腾</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -119,9 +119,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -129,23 +127,177 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">#面试</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2017/03/01/android面试题day1/">
-        <span class="archive-date">
-            Mar 2017
-        </span>
-        android面试一天一题 day1
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/20/线性表概念/">
+                线性表
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-20</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/数据结构与算法/">数据结构与算法</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>简称表，是零个货多个元素的有穷序列，通常可以标识成k0,k1,k2,…kn-1(n&gt;0)<ul>
+<li>表目：线性表中的元素（可包含多个数据项，记录）</li>
+<li>索引（下标）：i称为表目ki的索引或下标</li>
+<li>表的长度：线性表中所含元素的个数n</li>
+<li>空表：长度为零的线性表</li>
+</ul>
+</li>
+<li>线性表特点：<ul>
+<li>操作灵活，其长度可以增长，缩短</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h3><ul>
+<li>二元组B=(K,R)={a0,a1,a2,…an-1}  R={r}<ul>
+<li>有一个唯一的开始结点，它没有前驱，有一个唯一的直接后继</li>
+<li>有一个唯一的终止结点，他有一个唯一的直接前驱，而没有后继</li>
+<li>其它的结点皆为内部结点，每一个内部结点有且仅有一个唯一的直接前驱，也有一个唯一的直接后继<br>&lt; ai, ai+1 &gt; ai是ai+1的前驱，ai+1是ai的后继</li>
+<li>前驱/后继关系r，具有 <strong>反对称性</strong> 和 <strong>传递性</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420195348.jpg" alt=""></p>
+<ul>
+<li>特点<ul>
+<li>均匀性：虽然不同线性表的数据元素可以是各种各样的，但对于同一线性表的各数据元素必定具有<strong>相同的数据类型和长度</strong></li>
+<li>有序性：各数据元素在线性表中都有自己的位置，且数据元素之间的<strong>相对位置是线性的</strong></li>
+</ul>
+</li>
+<li>按复杂度程度划分<ul>
+<li>简单的：线性表，栈，队列，散列表</li>
+<li>高级的：广义表i，多维数组，文件</li>
+</ul>
+</li>
+<li>按访问方式划分<ul>
+<li>直接访问型</li>
+<li>顺序访问型</li>
+<li>目录索引型</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420200352.jpg" alt=""></p>
+<ul>
+<li>按操作划分<ul>
+<li>线性表<ul>
+<li>所有表目都是同一种类型结点的线性表</li>
+<li>不限制操作形式</li>
+<li>根据存储的不同分为：顺序表，链表</li>
+</ul>
+</li>
+<li>栈<ul>
+<li>插入和删除操作都限制在表的同一端进行</li>
+</ul>
+</li>
+<li>队列</li>
+<li>插入操作在表的一端，删除操作的另一端</li>
+</ul>
+</li>
+</ul>
+<h3 id="线性表逻辑结构"><a href="#线性表逻辑结构" class="headerlink" title="线性表逻辑结构"></a>线性表逻辑结构</h3><h4 id="主要属性包括"><a href="#主要属性包括" class="headerlink" title="主要属性包括"></a>主要属性包括</h4><ul>
+<li>线性表的长度</li>
+<li>表头</li>
+<li>表尾</li>
+<li>当前位置</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420201238.jpg" alt=""></p>
+<h4 id="线性表分类（按存储）"><a href="#线性表分类（按存储）" class="headerlink" title="线性表分类（按存储）"></a>线性表分类（按存储）</h4><ul>
+<li>所有表目都是同一类型结点的线性表</li>
+<li>不限制操作形式</li>
+<li>根据存储的不同分为：顺序表，链表</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420201503.jpg" alt=""></p>
+<h4 id="线性表的存储结构"><a href="#线性表的存储结构" class="headerlink" title="线性表的存储结构"></a>线性表的存储结构</h4><ul>
+<li>顺序表<ul>
+<li>按索引值从小到大存放在一片相邻的连续区域</li>
+<li>紧凑结构，存储密度为1</li>
+</ul>
+</li>
+<li>链表<ul>
+<li>单链表</li>
+<li>双链表</li>
+<li>循环链表</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420201749.jpg" alt=""></p>
+<h4 id="线性表分类（按操作）"><a href="#线性表分类（按操作）" class="headerlink" title="线性表分类（按操作）"></a>线性表分类（按操作）</h4><ul>
+<li>线性表<ul>
+<li>不限制操作</li>
+</ul>
+</li>
+<li>栈<ul>
+<li>在同一端操作</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420202033.jpg" alt=""></p>
+<ul>
+<li>队列<ul>
+<li>在两端操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="线性表的运算"><a href="#线性表的运算" class="headerlink" title="线性表的运算"></a>线性表的运算</h3><ul>
+<li>建立线性表</li>
+<li>清除线性表</li>
+<li>插入一个新元素</li>
+<li>删除某个元素</li>
+<li>修改某个元素</li>
+<li>排序</li>
+<li>检索</li>
+</ul>
+<h3 id="线性表类模板"><a href="#线性表类模板" class="headerlink" title="线性表类模板"></a>线性表类模板</h3><p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ截图20170420202343.jpg" alt=""></p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
+
+
+
+    </div>
+    
+
+</div>
         </section>
+
     </div>
 </div>
 
@@ -287,7 +439,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
