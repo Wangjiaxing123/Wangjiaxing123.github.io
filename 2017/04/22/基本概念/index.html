@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="一念起，天涯咫尺；一念灭，咫尺天涯。">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="newtrekWang">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="HTTP总结"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="一念起，天涯咫尺；一念灭，咫尺天涯。" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="生命在于折腾"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>HTTP总结 - 生命在于折腾</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2017/04/22/基本概念/">
+                HTTP总结
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-22</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/HTTP/">HTTP</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p><a href="http://www.jianshu.com/p/3141d4e46240" target="_blank" rel="external">http://www.jianshu.com/p/3141d4e46240</a></p>
+<h4 id="retrofit使用"><a href="#retrofit使用" class="headerlink" title="retrofit使用"></a>retrofit使用</h4><p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1016/3588.html" target="_blank" rel="external">http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/1016/3588.html</a></p>
+<p>####Okhttp的使用<br><a href="http://www.jianshu.com/p/457d3ab27584" target="_blank" rel="external">http://www.jianshu.com/p/457d3ab27584</a></p>
+<h5 id="okhttp3的设计思路"><a href="#okhttp3的设计思路" class="headerlink" title="okhttp3的设计思路"></a>okhttp3的设计思路</h5><p><img src="http://upload-images.jianshu.io/upload_images/1679464-73ce7abb5d29aafb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
+<h4 id="API部分简介"><a href="#API部分简介" class="headerlink" title="API部分简介"></a>API部分简介</h4><p><strong>OkHttpClient.Builder</strong>：OkHttpClient可通过Builder采用建造者模式构建，通过Builder可以方便灵活的设置通用参数</p>
+<ul>
+<li>public Builder connectTimeout(long timeout, TimeUnit unit)  为连接设置超时时间</li>
+<li>public Builder readTimeout(long timeout, TimeUnit unit) 设置默认读时间</li>
+<li>public Builder writeTimeout(long timeout, TimeUnit unit) 设置默认写时间</li>
+<li>public Builder proxy(Proxy proxy) 设置代理</li>
+<li>public Builder proxySelector(ProxySelector proxySelector)</li>
+<li>public Builder cookieJar(CookieJar cookieJar) 设置处理cookies的处理者（Sets the handler that can accept cookies from incoming HTTP responses and provides cookies to outgoing HTTP requests）</li>
+<li>void setInternalCache(InternalCache internalCache) 设置内部缓存</li>
+<li>public Builder cache(Cache cache) 设置缓存</li>
+<li>public Builder dns(Dns dns) 设置DNS 服务</li>
+<li>public Builder socketFactory(SocketFactory socketFactory)  </li>
+<li>public Builder sslSocketFactory(SSLSocketFactory sslSocketFactory)  配置证书用的</li>
+<li>public Builder sslSocketFactory( SSLSocketFactory sslSocketFactory, X509TrustManager trustManager) 配置证书用的</li>
+<li>public Builder hostnameVerifier(HostnameVerifier hostnameVerifier) Sets the verifier used to confirm that response certificates apply to requested hostnames for HTTPS connections. 应该也是是配置https的</li>
+<li>public Builder certificatePinner(CertificatePinner certificatePinner) 不太懂，没用过</li>
+<li>public Builder authenticator(Authenticator authenticator) Sets the authenticator used to respond to challenges from origin servers.</li>
+<li>public Builder proxyAuthenticator(Authenticator proxyAuthenticator) Sets the authenticator used to respond to challenges from proxy servers.</li>
+<li>public Builder connectionPool(ConnectionPool connectionPool)  Sets the connection pool used to recycle HTTP and HTTPS connections. 设置连接池</li>
+<li>public Builder followSslRedirects(boolean followProtocolRedirects) Configure this client to follow redirects from HTTPS to HTTP and from HTTP to HTTPS.不懂</li>
+<li>public Builder followRedirects(boolean followRedirects) Configure this client to follow redirects. If unset, redirects be followed. 不懂</li>
+<li>public Builder retryOnConnectionFailure(boolean retryOnConnectionFailure) 连接失败是否重连</li>
+<li>public Builder dispatcher(Dispatcher dispatcher) Sets the dispatcher used to set policy and execute asynchronous requests. Must not be null.</li>
+<li>public Builder protocols(List<protocol> protocols)  设置协议</protocol></li>
+<li>public Builder connectionSpecs(List<connectionspec> connectionSpecs)  不懂</connectionspec></li>
+<li>public List<interceptor> interceptors()  应该是获取拦截器列表</interceptor></li>
+<li>public Builder addInterceptor(Interceptor interceptor) 添加拦截器</li>
+<li>public List<interceptor> networkInterceptors()  返回网络拦截器</interceptor></li>
+<li>public Builder addNetworkInterceptor(Interceptor interceptor) 添加网络拦截器</li>
+<li>public OkHttpClient build() 构建OkHttpClient，并为它设置参数 </li>
+</ul>
+<p>由上面的设计图可知，OkhttpClient是核心，他就像一个浏览器一样，什么工作，比如请求，接受响应都是由它做的，关键就是怎么给他配置http协议的那些配置了，因为配置太多，所以用了Builder帮助配置</p>
+<p>翻翻Builder的源码可以知道,即时你没有配置啥参数，Builder也为你默认设置一些参数，比如他默认设置支持 Protocol.HTTP_2, Protocol.SPDY_3, Protocol.HTTP_1_1这三种协议，默认连接，读写超时都是10s,DNS用系统的，默认失败重连。。。。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">Dispatcher dispatcher;</div><div class="line">    Proxy proxy;</div><div class="line">    List&lt;Protocol&gt; protocols;</div><div class="line">    List&lt;ConnectionSpec&gt; connectionSpecs;</div><div class="line">    <span class="keyword">final</span> List&lt;Interceptor&gt; interceptors = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    <span class="keyword">final</span> List&lt;Interceptor&gt; networkInterceptors = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    ProxySelector proxySelector;</div><div class="line">    CookieJar cookieJar;</div><div class="line">    Cache cache;</div><div class="line">    InternalCache internalCache;</div><div class="line">    SocketFactory socketFactory;</div><div class="line">    SSLSocketFactory sslSocketFactory;</div><div class="line">    CertificateChainCleaner certificateChainCleaner;</div><div class="line">    HostnameVerifier hostnameVerifier;</div><div class="line">    CertificatePinner certificatePinner;</div><div class="line">    Authenticator proxyAuthenticator;</div><div class="line">    Authenticator authenticator;</div><div class="line">    ConnectionPool connectionPool;</div><div class="line">    Dns dns;</div><div class="line">    <span class="keyword">boolean</span> followSslRedirects;</div><div class="line">    <span class="keyword">boolean</span> followRedirects;</div><div class="line">    <span class="keyword">boolean</span> retryOnConnectionFailure;</div><div class="line">    <span class="keyword">int</span> connectTimeout;</div><div class="line">    <span class="keyword">int</span> readTimeout;</div><div class="line">    <span class="keyword">int</span> writeTimeout;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</div><div class="line">      dispatcher = <span class="keyword">new</span> Dispatcher();</div><div class="line">      protocols = DEFAULT_PROTOCOLS;</div><div class="line">      connectionSpecs = DEFAULT_CONNECTION_SPECS;</div><div class="line">      proxySelector = ProxySelector.getDefault();</div><div class="line">      cookieJar = CookieJar.NO_COOKIES;</div><div class="line">      socketFactory = SocketFactory.getDefault();</div><div class="line">      hostnameVerifier = OkHostnameVerifier.INSTANCE;</div><div class="line">      certificatePinner = CertificatePinner.DEFAULT;</div><div class="line">      proxyAuthenticator = Authenticator.NONE;</div><div class="line">      authenticator = Authenticator.NONE;</div><div class="line">      connectionPool = <span class="keyword">new</span> ConnectionPool();</div><div class="line">      dns = Dns.SYSTEM;</div><div class="line">      followSslRedirects = <span class="keyword">true</span>;</div><div class="line">      followRedirects = <span class="keyword">true</span>;</div><div class="line">      retryOnConnectionFailure = <span class="keyword">true</span>;</div><div class="line">      connectTimeout = <span class="number">10_000</span>;</div><div class="line">      readTimeout = <span class="number">10_000</span>;</div><div class="line">      writeTimeout = <span class="number">10_000</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="创建OkhttpHelper"><a href="#创建OkhttpHelper" class="headerlink" title="创建OkhttpHelper"></a>创建OkhttpHelper</h4><p>因为只要有请求就必须有okhttpclient参与，一般项目是分模块的，每个模块基本都有网络请求，总不能每个请求都要构造一个okhttpclient去请求吧，所以okhttpclient设计为单例，不用new ,到处都可以用它，方便快捷，代码得到了复用，也节省了内存开销</p>
+<p>这里采用内部静态类实现单例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OkhttpHelper</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULTITMEOUT=<span class="number">5</span>;</div><div class="line">    <span class="keyword">private</span> OkHttpClient okHttpClient;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">OkhttpHelper</span><span class="params">()</span></span>&#123;</div><div class="line">        OkHttpClient.Builder builder=<span class="keyword">new</span> OkHttpClient.Builder()</div><div class="line">                .connectTimeout(DEFAULTITMEOUT, TimeUnit.SECONDS);</div><div class="line">        okHttpClient=builder.build();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> OkHttpClient <span class="title">getOkHttpClient</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> okHttpClient;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">OkhttpHelperHolder</span></span>&#123;</div><div class="line">        <span class="keyword">public</span> <span class="keyword">static</span> OkhttpHelper INSTANCE=<span class="keyword">new</span> OkhttpHelper();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有Http协议，每个连接必有请求头，是供服务端或客户端读取的，这里Okhttp封装了请求，并且也为它提供builder类，再翻翻看</p>
+<p>这些是默认的参数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> HttpUrl url;</div><div class="line">   <span class="keyword">private</span> String method;</div><div class="line">   <span class="keyword">private</span> Headers.Builder headers;</div><div class="line">   <span class="keyword">private</span> RequestBody body;</div><div class="line">   <span class="keyword">private</span> Object tag;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Builder</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="keyword">this</span>.method = <span class="string">"GET"</span>;</div><div class="line">     <span class="keyword">this</span>.headers = <span class="keyword">new</span> Headers.Builder();</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="function"><span class="keyword">private</span> <span class="title">Builder</span><span class="params">(Request request)</span> </span>&#123;</div><div class="line">     <span class="keyword">this</span>.url = request.url;</div><div class="line">     <span class="keyword">this</span>.method = request.method;</div><div class="line">     <span class="keyword">this</span>.body = request.body;</div><div class="line">     <span class="keyword">this</span>.tag = request.tag;</div><div class="line">     <span class="keyword">this</span>.headers = request.headers.newBuilder();</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>public Builder url(HttpUrl url) 设置请求的URl,这个方法相当于浏览器上的地址输入框</li>
+<li>public Builder url(String url) 重载方法</li>
+<li>public Builder url(URL url)  也是重载，所以这里有三种url的表达格式</li>
+<li>public Builder header(String name, String value)  这里是更新header字段的，就是设置键值对，里面的header应该用了个Map来记录的，我还在看</li>
+<li>public Builder addHeader(String name, String value)  添加header字段</li>
+<li>public Builder removeHeader(String name) 删除header字段</li>
+<li>public Builder headers(Headers headers) 看吧，这里直接设置Headers，headers肯定是把所有的字段都包起来了</li>
+<li>public Builder cacheControl(CacheControl cacheControl) 设置缓存控制，它其实也只设置header字段，不信看它的内部实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Builder <span class="title">cacheControl</span><span class="params">(CacheControl cacheControl)</span> </span>&#123;</div><div class="line">   String value = cacheControl.toString();</div><div class="line">   <span class="keyword">if</span> (value.isEmpty()) <span class="keyword">return</span> removeHeader(<span class="string">"Cache-Control"</span>);</div><div class="line">   <span class="keyword">return</span> header(<span class="string">"Cache-Control"</span>, value);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>public Builder method(String method, RequestBody body)  设置请求的方法和请求体，为什么先说这个呢？</li>
+<li>public Builder get() 设置请求方法</li>
+</ul>
+<p><strong>其实它的具体实现是调用method()方法</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Builder <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="keyword">return</span> method(<span class="string">"GET"</span>, <span class="keyword">null</span>);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+    </div>
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/22/基本概念/">HTTP总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/22/什么是注解/">编译时注解</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/20/线性表概念/">线性表</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/20/JetBrains C++ IDE CLion配置/">Clion 安装</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
+    <h2>Categories</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/c/">c++</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/android面试/">android面试</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Wangjiaxing123/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/u/0/104493906013014839335">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'newtrek';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

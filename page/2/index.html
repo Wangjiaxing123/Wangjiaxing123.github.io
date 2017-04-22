@@ -139,6 +139,89 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2017/04/05/排序/">
+                java实现基础算法
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-04-05</span>
+            
+            
+                <a href="http://yoursite.com/2017/04/05/排序/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/算法/">算法</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><blockquote>
+<p>原理就是打牌时排序的方法</p>
+<h4 id="排序规则"><a href="#排序规则" class="headerlink" title="排序规则"></a>排序规则</h4><ul>
+<li>取出未排序部分的开头元素赋值给临时保存数据的变量V.</li>
+<li>在已排列的部分将所有比V大的元素向后移动一个位置</li>
+<li>将取出的元素插入空位。</li>
+</ul>
+</blockquote>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] insert(<span class="keyword">int</span>[] a)&#123;</div><div class="line">        <span class="keyword">if</span> (a.length&lt;<span class="number">2</span>)&#123;</div><div class="line">            <span class="keyword">return</span> a;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i&lt;a.length)&#123;</div><div class="line">            temp=a[i];</div><div class="line">            <span class="keyword">for</span> (j=i-<span class="number">1</span>;((j&gt;=<span class="number">0</span>)&amp;&amp;(temp&lt;a[j]));j--)&#123;</div><div class="line">                    a[j+<span class="number">1</span>]=a[j];</div><div class="line">            &#125;</div><div class="line"><span class="comment">//            因为j已经上一次已经减一了</span></div><div class="line">            a[j+<span class="number">1</span>]=temp;</div><div class="line">            i++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+        </div>
+        <a href="/2017/04/05/排序/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2017/03/25/android IPC机制实现方式之AIDL/">
+                android IPC机制实现方式之AIDL
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2017-03-25</span>
+            
+            
+                <a href="http://yoursite.com/2017/03/25/android IPC机制实现方式之AIDL/#disqus_thread" class="comments article-comment-link">Kommentare</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/AIDL/">AIDL</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="android-IPC机制实现方式之AIDL"><a href="#android-IPC机制实现方式之AIDL" class="headerlink" title="android IPC机制实现方式之AIDL"></a>android IPC机制实现方式之AIDL</h1><h3 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h3><blockquote>
+<p>进程间通信或者跨进程通信，是指链各个进程之间进行数据交互的过程。</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>是CPU调度的最小丹云，同时线程是一种有限的资源；</p>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>是指一个执行单元，在PC和移动设备上是指一个程序或者一个应用，一个进程可以包含多个进程，因此进程和线程是包含和被包含的关系。</p>
+<h2 id="IPC的使用场景"><a href="#IPC的使用场景" class="headerlink" title="IPC的使用场景"></a>IPC的使用场景</h2><p><strong>只有面对多进程时，才需要考虑进程间通信，多进程的情况分为两种：</strong></p>
+<ul>
+<li>.一个应用因为某些原因自身需要采用多进程模式来实现，比如：有些模块需要运行在单独的进程中，又或者是为了增大一个应用可使用的内存所以需要多进程来获取多份内存空间。</li>
+<li>一个应用需要向其它应用获取数据，由于是两个应用，所以必须采用跨进程的方式来获取所需的数据，比如：通过ContentProvider对通讯录的增删改查。</li>
+</ul>
+</blockquote>
+        </div>
+        <a href="/2017/03/25/android IPC机制实现方式之AIDL/" class="read-more">Read More</a>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2017/03/25/android四大组件之Service/">
                 android四大组件之Service
             </a>
@@ -487,95 +570,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/03/04/《android 源码设计模式》笔记之代理模式/">
-                Untitled
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-03-04</span>
-            
-            
-                <a href="http://yoursite.com/2017/03/04/《android 源码设计模式》笔记之代理模式/#disqus_thread" class="comments article-comment-link">Kommentare</a>
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>#《android 源码设计模式》笔记之代理模式</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>为其它对象提供一种以控制对这个对象的访问</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>当无法或不想直接访问某个对象或访问某个对象存在困难时可以通过一个代理对象来间接来访问，为了保证客户端使用的透明性，委托对象与代理对象需要事项相同的接口。</p>
-<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><ul>
-<li>Client —客户类<br>即使用代理类的类型</li>
-<li>Subject— 抽象主题类<br>主要职责是声明真实主题与代理的共同接口关系，该类既可以是一个抽象类也可以是一个接口。</li>
-<li>RealSubject — 实现抽象主题的真是主题类<br>被委托类或被代理类，定义了代理所表示的真是对象，由其执行具体的业务逻辑方法，而客户端则通过代理类间接地调用真实主题类中定义的方法。</li>
-<li>ProxySubject — 代理类（持有真实主题的引用）<br>委托类或代理类，持有对真实主题类的引用。</li>
-</ul>
-</blockquote>
-<p><img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170304112232.jpg" alt=""></p>
-        </div>
-        <a href="/2017/03/04/《android 源码设计模式》笔记之代理模式/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2017/03/03/《android 源码设计模式》笔记之原型模式/">
-                java 设计模式之原型模式
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2017-03-03</span>
-            
-            
-                <a href="http://yoursite.com/2017/03/03/《android 源码设计模式》笔记之原型模式/#disqus_thread" class="comments article-comment-link">Kommentare</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/设计模式/">设计模式</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>#《android 源码设计模式》笔记之原型模式</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>用原型实例指定常见对象的种类，并通过拷贝这些原型创建新的对象。</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>类初始化需要消化非常多的资源，这个资源包括数据，硬件资源等，通过原型拷贝避免这些消耗。</li>
-<li>通过new产生一个对象需要非常繁琐的数据准备货访问权限，这是可以使用原型模式。</li>
-<li>一个对象需要提供给其它调用者访问，而且各个调用者可能都需要修改其值时，可以考虑用原型模式拷贝多个对象共调用者使用，即保护性拷贝。<br>注意，通过实现cloneAble接口的原型模式在调用colone函数构造实例是并不一定比new操作速度快，只有当通过new构造对象较为耗时或者成本较高时，通过clone方法才能够获得效率上的提高。所以，在使用cloneAble时需要考虑构造对象的成本以及做一些效率上的测试。</li>
-</ul>
-</blockquote>
-<h2 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h2><blockquote>
-<ul>
-<li>Client :客户端用户</li>
-<li>protocolType： 抽象类或者接口，申明具有clone能力</li>
-<li>ConcretePrototype:具体的实现类。</li>
-</ul>
-</blockquote>
-<p> <img src="http://ojgs96t5i.bkt.clouddn.com/QQ20170303212707.jpg" alt=""></p>
-        </div>
-        <a href="/2017/03/03/《android 源码设计模式》笔记之原型模式/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -618,19 +612,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2017/04/22/基本概念/">HTTP总结</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2017/04/22/什么是注解/">编译时注解</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2017/04/20/线性表概念/">线性表</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2017/04/20/JetBrains C++ IDE CLion配置/">Clion 安装</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/04/18/概论/">数据结构与算法笔记</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2017/04/18/对象的自动清除/">Java程序设计笔记</a>
             </li>
             
         </ul>
@@ -644,7 +638,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/Git/">Git</a>
+            <a class="footer-post" href="/categories/androidDialog/">androidDialog</a>
         </li>
         
         <li>
@@ -652,11 +646,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/AIDL/">AIDL</a>
+            <a class="footer-post" href="/categories/SQLite/">SQLite</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/android界面/">android界面</a>
+            <a class="footer-post" href="/categories/android面试/">android面试</a>
         </li>
         
     </ul>
